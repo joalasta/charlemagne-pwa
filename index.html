@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlemagne et les Carolingiens - Application d'apprentissage</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#764ba2">
+    <meta name="description" content="Apprends l'histoire de Charlemagne et des Carolingiens de manière interactive !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Charlemagne App">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0;
+            }
+            
+            .content-wrapper {
+                padding: 0 10px;
+            }
+            
+            .home-page {
+                padding: 50px 10px;
+            }
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Page d'accueil */
+        .home-page {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .home-page h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .home-page .subtitle {
+            color: #f0f0f0;
+            font-size: 1.3em;
+            margin-bottom: 50px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .menu-card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .menu-card h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .menu-card p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Navigation fixe */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.98);
+            padding: 15px 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-bar h2 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-left: 32px;
+        }
+
+        .back-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #5a3a8a;
+        }
+
+        .content-wrapper {
+            margin-top: 80px;
+            padding: 0 24px;
+        }
+
+        /* Leçon */
+        .lesson-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .lesson-content h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+        }
+
+        .lesson-content h3 {
+            color: #667eea;
+            margin: 30px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        .lesson-content p, .lesson-content li {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .lesson-content ul {
+            margin-left: 30px;
+        }
+
+        .highlight {
+            background: #ffeaa7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .date-important {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .quiz-mode-switch {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .switch-container {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .switch-container input {
+            display: none;
+        }
+
+        .switch-slider {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 30px;
+            margin-right: 15px;
+            transition: background 0.3s;
+        }
+
+        .switch-slider::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+        }
+
+        .switch-container input:checked + .switch-slider {
+            background: #e74c3c;
+        }
+
+        .switch-container input:checked + .switch-slider::before {
+            transform: translateX(30px);
+        }
+
+        .hard-mode-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 5px 0;
+            transition: border-color 0.3s;
+        }
+
+        .hard-mode-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .hard-mode-input.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .hard-mode-input.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .submit-answer {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+
+        .submit-answer:hover {
+            background: #5a3a8a;
+        }
+
+        .submit-answer:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .options label {
+            display: block;
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .options label:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .options label.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            pointer-events: none;
+        }
+
+        .options label.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+            pointer-events: none;
+        }
+
+        .options input[type="radio"] {
+            display: none;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e7f3ff;
+            border-radius: 5px;
+            font-style: italic;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .reset-quiz {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background 0.3s ease;
+        }
+
+        .reset-quiz:hover {
+            background: #c0392b;
+        }
+
+        .score-live {
+            position: fixed;
+            top: 100px;
+            right: 24px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 1.2em;
+            color: #667eea;
+        }
+
+        /* Chronologie améliorée */
+        .timeline-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 50px;
+            cursor: pointer;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: -30px;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-date {
+            transform: scale(1.2);
+        }
+
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            background: #e7f3ff;
+            transform: translateX(5px);
+        }
+
+        .timeline-content h4 {
+            color: #764ba2;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            font-size: 0.95em;
+            margin: 0;
+            display: none;
+        }
+
+        .timeline-item.active .timeline-content p {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .timeline-hint {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <h1>👑 Charlemagne et les Carolingiens</h1>
+                <p class="subtitle">Apprends l'histoire de l'Empire carolingien de manière interactive !</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">📚</div>
+                        <h3>La Leçon</h3>
+                        <p>Découvre l'histoire de Charlemagne</p>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">🎯</div>
+                        <h3>Quiz</h3>
+                        <p>Teste tes connaissances</p>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">📅</div>
+                        <h3>Chronologie</h3>
+                        <p>Les dates importantes</p>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="nav-bar">
+                <button class="back-btn" onclick="showPage('home')">← Retour</button>
+                <h2>📚 La Leçon</h2>
+            </div>
+            
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>H8 - L'empire de Charlemagne et les Carolingiens</h2>
+                    
+                    <h3>1. De Pépin le Bref à Charlemagne</h3>
+                    <p>
+                        <span class="date-important">En 732</span>, <span class="highlight">Charles Martel</span>, maire du palais, parvient à repousser les troupes musulmanes à Poitiers. Il devient un héros. Son fils, <span class="highlight">Pépin le Bref</span>, se fait couronner roi des Francs en <span class="date-important">751</span> avec le soutien du Pape. Il fonde ainsi la <span class="highlight">dynastie des Carolingiens</span>.
+                    </p>
+                    
+                    <h3>2. L'Empire de Charlemagne</h3>
+                    <p>
+                        L'empire de Charlemagne était <span class="highlight">vaste</span>. Il agrandit beaucoup son royaume au cours des guerres successives. Il constitue un immense empire dans lequel il impose la religion chrétienne et la capitale est <span class="highlight">Aix-la-Chapelle</span>.
+                    </p>
+                    
+                    <p>
+                        Pour bien gérer son empire, Charlemagne choisit des hommes fidèles et leur confie chacun une région : ce sont les <span class="highlight">comtes</span>. Ces comtes devaient faire appliquer les lois de l'empereur, rendre la justice et organiser l'armée. Charlemagne envoya aussi des <span class="highlight">missi dominici</span> contrôler que les comtes appliquaient ses ordres et respectaient ses autorités.
+                    </p>
+                    
+                    <h3>3. Les actions de Charlemagne dans le royaume de France</h3>
+                    <p>
+                        Charlemagne n'était pas très instruit, mais il aimait les arts et la culture. Il a développé les écoles religieuses et ouvre une école dans son palais. Il demande que des écoles soient ouvertes dans chaque évêché et chaque monastère. Il encourage le développement des arts et du savoir. Il favorise le travail des lettrés, des peintres, des monastères et des architectes.
+                    </p>
+                    
+                    <h3>4. La fin des Carolingiens</h3>
+                    <p>
+                        <span class="highlight">Louis le Pieux</span> (<span class="date-important">814-840</span>) succède à Charlemagne. Après sa mort, ses trois fils (Charles, Louis et Lothaire) se partagent l'empire au <span class="highlight">traité de Verdun en 843</span>. Les rois affaiblis ne sont plus obéis par les comtes et ne peuvent plus défendre l'empire. Les comtes choisissent un nouveau roi : <span class="highlight">Hugues Capet</span>, premier roi de la dynastie des Capétiens.
+                    </p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>732</strong> : Charles Martel arrête les musulmans à Poitiers</li>
+                        <li><strong>751</strong> : Pépin le Bref devient roi et fonde la dynastie des Carolingiens</li>
+                        <li><strong>768 à 814</strong> : Règne de Charlemagne</li>
+                        <li><strong>800</strong> : Charlemagne est couronné empereur par le Pape Léon III</li>
+                        <li><strong>843</strong> : Traité de Verdun - partage de l'empire</li>
+                        <li><strong>987</strong> : Fin de la dynastie des Carolingiens</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="nav-bar">
+                <button class="back-btn" onclick="showPage('home')">← Retour</button>
+                <h2>🎯 Quiz</h2>
+            </div>
+            
+            <div class="content-wrapper">
+                <div class="score-live" id="liveScore">Score: 0/11</div>
+                
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur Charlemagne !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : En quelle année Charles Martel a-t-il repoussé les troupes musulmanes à Poitiers ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', false)">751</label>
+                            <label onclick="checkAnswer(this, 'q1', true)">732</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">800</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">843</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ C'est en 732 que Charles Martel remporte la bataille de Poitiers, stoppant l'avancée des troupes musulmanes en Europe. Cette victoire lui vaut le surnom de "Martel" (le marteau).
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2 : Qui était le père de Charlemagne ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">Charles Martel</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">Pépin le Bref</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Louis le Pieux</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Hugues Capet</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ Pépin le Bref était le père de Charlemagne. Il fut le premier roi de la dynastie carolingienne après avoir renversé le dernier roi mérovingien en 751.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : Quelle était la capitale de l'empire de Charlemagne ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">Paris</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Rome</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">Aix-la-Chapelle</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Poitiers</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ Aix-la-Chapelle (aujourd'hui Aachen en Allemagne) était la capitale de l'empire. Charlemagne y fit construire un magnifique palais avec une chapelle inspirée de l'architecture byzantine.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : En quelle année Charlemagne a-t-il été couronné empereur ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">768</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">800</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">814</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">843</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ Le jour de Noël 800, le pape Léon III couronne Charlemagne empereur d'Occident à Rome. C'est la renaissance de l'Empire romain d'Occident !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Comment s'appelaient les envoyés de l'empereur qui contrôlaient les comtes ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Les vassaux</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Les missi dominici</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Les évêques</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Les moines</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Les missi dominici ("envoyés du maître") étaient des inspecteurs royaux qui parcouraient l'empire pour vérifier que les comtes appliquaient correctement les ordres de l'empereur.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6 : Quel traité a partagé l'empire de Charlemagne en 843 ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q6', false)">Le traité de Paris</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Le traité d'Aix-la-Chapelle</label>
+                            <label onclick="checkAnswer(this, 'q6', true)">Le traité de Verdun</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Le traité de Rome</label>
+                        </div>
+                        <div class="explanation" id="exp-q6">
+                            ✨ Le traité de Verdun en 843 divise l'empire entre les trois petits-fils de Charlemagne : Charles le Chauve (France), Louis le Germanique (Allemagne) et Lothaire (Lotharingie).
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7 : Qui a fondé la dynastie des Carolingiens ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q7', false)">Charlemagne</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Charles Martel</label>
+                            <label onclick="checkAnswer(this, 'q7', true)">Pépin le Bref</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Louis le Pieux</label>
+                        </div>
+                        <div class="explanation" id="exp-q7">
+                            ✨ Pépin le Bref, fils de Charles Martel, fonde la dynastie des Carolingiens en 751 quand il devient roi des Francs. Le nom "Carolingien" vient de Carolus (Charles en latin).
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8 : Qui succède à Charlemagne après sa mort ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q8', false)">Charles le Chauve</label>
+                            <label onclick="checkAnswer(this, 'q8', true)">Louis le Pieux</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Lothaire</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Hugues Capet</label>
+                        </div>
+                        <div class="explanation" id="exp-q8">
+                            ✨ Louis le Pieux, fils de Charlemagne, règne de 814 à 840. Son surnom "le Pieux" vient de sa grande dévotion religieuse.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9 : Que demandait Charlemagne concernant l'éducation ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q9', false)">Que seuls les nobles soient éduqués</label>
+                            <label onclick="checkAnswer(this, 'q9', true)">Que des écoles soient ouvertes dans chaque évêché et monastère</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Que l'éducation soit interdite</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Que seuls les garçons soient éduqués</label>
+                        </div>
+                        <div class="explanation" id="exp-q9">
+                            ✨ Charlemagne a lancé la "Renaissance carolingienne" en ordonnant la création d'écoles dans tous les monastères et évêchés pour développer l'éducation et la culture.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10 : Quel était le rôle principal des comtes dans l'empire de Charlemagne ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q10', false)">Enseigner dans les écoles</label>
+                            <label onclick="checkAnswer(this, 'q10', true)">Faire appliquer les lois, rendre la justice et organiser l'armée</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Construire des églises</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Collecter les impôts seulement</label>
+                        </div>
+                        <div class="explanation" id="exp-q10">
+                            ✨ Les comtes étaient les représentants de Charlemagne dans chaque région. Ils devaient faire appliquer les lois de l'empereur, rendre la justice et organiser l'armée locale.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 11 : En quelle année se termine la dynastie des Carolingiens ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q11', false)">843</label>
+                            <label onclick="checkAnswer(this, 'q11', false)">887</label>
+                            <label onclick="checkAnswer(this, 'q11', true)">987</label>
+                            <label onclick="checkAnswer(this, 'q11', false)">1000</label>
+                        </div>
+                        <div class="explanation" id="exp-q11">
+                            ✨ En 987, Hugues Capet est élu roi de France, mettant fin à la dynastie carolingienne et débutant celle des Capétiens qui durera plus de 800 ans !
+                        </div>
+                    </div>
+                    
+                    <button class="reset-quiz" onclick="resetQuiz()">🔄 Réinitialiser le quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="nav-bar">
+                <button class="back-btn" onclick="showPage('home')">← Retour</button>
+                <h2>📅 Chronologie</h2>
+            </div>
+            
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes des Carolingiens</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">732</div>
+                            <div class="timeline-content">
+                                <h4>Bataille de Poitiers</h4>
+                                <p>Charles Martel repousse les troupes musulmanes et devient un héros dans tout le royaume franc.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">751</div>
+                            <div class="timeline-content">
+                                <h4>Naissance de la dynastie carolingienne</h4>
+                                <p>Pépin le Bref devient roi des Francs avec le soutien du Pape et fonde la dynastie des Carolingiens.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">768</div>
+                            <div class="timeline-content">
+                                <h4>Début du règne de Charlemagne</h4>
+                                <p>Charlemagne devient roi des Francs et commence son expansion territoriale.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">800</div>
+                            <div class="timeline-content">
+                                <h4>Couronnement impérial</h4>
+                                <p>Le jour de Noël, Charlemagne est couronné empereur d'Occident par le Pape Léon III à Rome.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">814</div>
+                            <div class="timeline-content">
+                                <h4>Mort de Charlemagne</h4>
+                                <p>Charlemagne meurt à Aix-la-Chapelle. Son fils Louis le Pieux lui succède.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">843</div>
+                            <div class="timeline-content">
+                                <h4>Traité de Verdun</h4>
+                                <p>L'empire est partagé entre les trois fils de Louis le Pieux : Charles, Louis et Lothaire.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">987</div>
+                            <div class="timeline-content">
+                                <h4>Fin des Carolingiens</h4>
+                                <p>Hugues Capet devient roi de France, marquant la fin de la dynastie carolingienne et le début des Capétiens.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        // Variables globales
+        let quizScore = 0;
+        let answeredQuestions = [];
+        let isHardMode = false;
+
+        // Questions et réponses pour le mode difficile
+        const hardModeAnswers = {
+            'q1': ['732'],
+            'q2': ['pépin le bref', 'pepin le bref'],
+            'q3': ['aix-la-chapelle', 'aix la chapelle'],
+            'q4': ['800'],
+            'q5': ['missi dominici'],
+            'q6': ['traité de verdun', 'traite de verdun', 'verdun'],
+            'q7': ['pépin le bref', 'pepin le bref'],
+            'q8': ['louis le pieux'],
+            'q9': ['écoles', 'ecoles'],
+            'q10': ['faire appliquer les lois, rendre la justice et organiser l\'armée', 'appliquer les lois', 'rendre la justice', 'organiser l\'armée'],
+            'q11': ['987']
+        };
+
+        // Basculer entre mode normal et difficile
+        function toggleHardMode() {
+            isHardMode = document.getElementById('hardMode').checked;
+            resetQuiz();
+            
+            // Convertir toutes les questions
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question, index) => {
+                const questionId = 'q' + (index + 1);
+                const optionsDiv = question.querySelector('.options');
+                
+                if (isHardMode) {
+                    // Mode difficile : remplacer par un champ de saisie
+                    optionsDiv.innerHTML = `
+                        <div style="display: flex; align-items: center;">
+                            <input type="text" class="hard-mode-input" id="input-${questionId}" placeholder="Tapez votre réponse...">
+                            <button class="submit-answer" onclick="checkHardAnswer('${questionId}')">Valider</button>
+                        </div>
+                    `;
+                } else {
+                    // Mode normal : remettre les options QCM
+                    restoreNormalMode(questionId, optionsDiv);
+                }
+            });
+        }
+
+        function restoreNormalMode(questionId, optionsDiv) {
+            const qcmOptions = {
+                'q1': [
+                    {text: '751', correct: false},
+                    {text: '732', correct: true},
+                    {text: '800', correct: false},
+                    {text: '843', correct: false}
+                ],
+                'q2': [
+                    {text: 'Charles Martel', correct: false},
+                    {text: 'Pépin le Bref', correct: true},
+                    {text: 'Louis le Pieux', correct: false},
+                    {text: 'Hugues Capet', correct: false}
+                ],
+                'q3': [
+                    {text: 'Paris', correct: false},
+                    {text: 'Rome', correct: false},
+                    {text: 'Aix-la-Chapelle', correct: true},
+                    {text: 'Poitiers', correct: false}
+                ],
+                'q4': [
+                    {text: '768', correct: false},
+                    {text: '800', correct: true},
+                    {text: '814', correct: false},
+                    {text: '843', correct: false}
+                ],
+                'q5': [
+                    {text: 'Les vassaux', correct: false},
+                    {text: 'Les missi dominici', correct: true},
+                    {text: 'Les évêques', correct: false},
+                    {text: 'Les moines', correct: false}
+                ],
+                'q6': [
+                    {text: 'Le traité de Paris', correct: false},
+                    {text: 'Le traité d\'Aix-la-Chapelle', correct: false},
+                    {text: 'Le traité de Verdun', correct: true},
+                    {text: 'Le traité de Rome', correct: false}
+                ],
+                'q7': [
+                    {text: 'Charlemagne', correct: false},
+                    {text: 'Charles Martel', correct: false},
+                    {text: 'Pépin le Bref', correct: true},
+                    {text: 'Louis le Pieux', correct: false}
+                ],
+                'q8': [
+                    {text: 'Charles le Chauve', correct: false},
+                    {text: 'Louis le Pieux', correct: true},
+                    {text: 'Lothaire', correct: false},
+                    {text: 'Hugues Capet', correct: false}
+                ],
+                'q9': [
+                    {text: 'Que seuls les nobles soient éduqués', correct: false},
+                    {text: 'Que des écoles soient ouvertes dans chaque évêché et monastère', correct: true},
+                    {text: 'Que l\'éducation soit interdite', correct: false},
+                    {text: 'Que seuls les garçons soient éduqués', correct: false}
+                ],
+                'q10': [
+                    {text: 'Enseigner dans les écoles', correct: false},
+                    {text: 'Faire appliquer les lois, rendre la justice et organiser l\'armée', correct: true},
+                    {text: 'Construire des églises', correct: false},
+                    {text: 'Collecter les impôts seulement', correct: false}
+                ],
+                'q11': [
+                    {text: '843', correct: false},
+                    {text: '887', correct: false},
+                    {text: '987', correct: true},
+                    {text: '1000', correct: false}
+                ]
+            };
+            
+            const options = qcmOptions[questionId];
+            optionsDiv.innerHTML = options.map(option => 
+                `<label onclick="checkAnswer(this, '${questionId}', ${option.correct})">${option.text}</label>`
+            ).join('');
+        }
+
+        // Vérifier la réponse en mode difficile
+        function checkHardAnswer(questionId) {
+            if (answeredQuestions.includes(questionId)) {
+                return;
+            }
+            
+            const input = document.getElementById('input-' + questionId);
+            const userAnswer = input.value.toLowerCase().trim();
+            const correctAnswers = hardModeAnswers[questionId];
+            
+            answeredQuestions.push(questionId);
+            
+            // Désactiver le champ et le bouton
+            input.disabled = true;
+            const button = input.parentElement.querySelector('.submit-answer');
+            button.disabled = true;
+            
+            // Vérifier si la réponse est correcte
+            const isCorrect = correctAnswers.some(answer => 
+                userAnswer.includes(answer.toLowerCase()) || 
+                answer.toLowerCase().includes(userAnswer)
+            );
+            
+            if (isCorrect) {
+                input.classList.add('correct');
+                quizScore++;
+            } else {
+                input.classList.add('incorrect');
+                // Afficher la bonne réponse
+                input.placeholder = `Réponse: ${correctAnswers[0]}`;
+            }
+            
+            updateQuizScore();
+            
+            // Afficher l'explication
+            const explanation = document.getElementById('exp-' + questionId);
+            explanation.classList.add('show');
+        }
+
+        // Navigation entre les pages
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Quiz avec feedback immédiat
+        function checkAnswer(label, questionId, isCorrect) {
+            // Vérifier si la question a déjà été répondue
+            if (answeredQuestions.includes(questionId)) {
+                return;
+            }
+            
+            answeredQuestions.push(questionId);
+            
+            // Désactiver tous les labels de cette question
+            const question = label.parentElement;
+            const labels = question.querySelectorAll('label');
+            labels.forEach(l => {
+                l.style.pointerEvents = 'none';
+                l.style.cursor = 'default';
+            });
+            
+            // Marquer la réponse
+            if (isCorrect) {
+                label.classList.add('correct');
+                quizScore++;
+                updateQuizScore();
+            } else {
+                label.classList.add('incorrect');
+                // Montrer la bonne réponse
+                labels.forEach((l, index) => {
+                    const correctAnswers = {
+                        'q1': 1,  // 732
+                        'q2': 1,  // Pépin le Bref
+                        'q3': 2,  // Aix-la-Chapelle
+                        'q4': 1,  // 800
+                        'q5': 1,  // missi dominici
+                        'q6': 2,  // Verdun
+                        'q7': 2,  // Pépin le Bref
+                        'q8': 1,  // Louis le Pieux
+                        'q9': 1,  // écoles
+                        'q10': 1, // comtes
+                        'q11': 2  // 987
+                    };
+                    
+                    if (index === correctAnswers[questionId]) {
+                        l.classList.add('correct');
+                    }
+                });
+            }
+            
+            // Afficher l'explication
+            const explanation = document.getElementById('exp-' + questionId);
+            explanation.classList.add('show');
+        }
+
+        function updateQuizScore() {
+            document.getElementById('liveScore').textContent = `Score: ${quizScore}/11`;
+        }
+
+        function resetQuiz() {
+            quizScore = 0;
+            answeredQuestions = [];
+            updateQuizScore();
+            
+            // Réinitialiser toutes les questions
+            const labels = document.querySelectorAll('.options label');
+            labels.forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+                label.style.pointerEvents = 'auto';
+                label.style.cursor = 'pointer';
+            });
+            
+            // Cacher les explications
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.remove('show');
+            });
+        }
+
+        // Chronologie interactive
+        function toggleTimelineItem(item) {
+            // Fermer tous les autres items
+            document.querySelectorAll('.timeline-item').forEach(i => {
+                if (i !== item) {
+                    i.classList.remove('active');
+                }
+            });
+            
+            // Basculer l'item cliqué
+            item.classList.toggle('active');
+        }
+
+        // Initialisation au chargement
+        window.onload = function() {
+            updateQuizScore();
+            
+            // Enregistrer le Service Worker pour la PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(function(registration) {
+                        console.log('Service Worker enregistré avec succès:', registration);
+                    })
+                    .catch(function(error) {
+                        console.log('Erreur lors de l\'enregistrement du Service Worker:', error);
+                    });
+            }
+        };
+    </script>
+</body>
+</html>

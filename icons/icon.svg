@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond circulaire -->
+  <circle cx="256" cy="256" r="240" fill="#1a237e"/>
+  
+  <!-- Couronne -->
+  <path d="M 128 220
+           L 176 180
+           L 256 280
+           L 336 180
+           L 384 220
+           L 356 320
+           L 156 320
+           L 128 220
+           Z" 
+        fill="#ffd700" 
+        stroke="#c9b037" 
+        stroke-width="8"/>
+  
+  <!-- Points de la couronne -->
+  <circle cx="176" cy="180" r="12" fill="#ffd700"/>
+  <circle cx="256" cy="160" r="12" fill="#ffd700"/>
+  <circle cx="336" cy="180" r="12" fill="#ffd700"/>
+  
+  <!-- Joyaux de la couronne -->
+  <circle cx="176" cy="240" r="8" fill="#e91e63"/>
+  <circle cx="256" cy="240" r="8" fill="#2196f3"/>
+  <circle cx="336" cy="240" r="8" fill="#4caf50"/>
+</svg> 
