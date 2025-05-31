@@ -78,7 +78,7 @@ body {
 
 .menu-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 40px 30px;
     text-align: center;
     cursor: pointer;
@@ -95,12 +95,15 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+.icon-img {
+    width: 60px; /* Réduit de 50px à 35px */
+    height: 60px; /* Réduit de 50px à 35px */
+}
+
 .menu-card .icon {
     font-size: 3em;
     margin-bottom: 20px;
     background: #e6efff;
-    width: 80px;
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,9 +125,21 @@ body {
     color: #9c27b0;
 }
 
+.charlemagne-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.charlemagne-image {
+    width: 70px; /* Ajustez selon la taille souhaitée */
+    height: auto;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2)); /* Ombre légère */
+}
+
 .menu-card h3 {
     color: #2d3748;
-    font-size: 1.5em;
+    font-size: 1,2em;
     margin-bottom: 15px;
     font-weight: 600;
 }
