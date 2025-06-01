@@ -6,7 +6,7 @@
     <title>Histoires Interactives</title>
     
     <!-- PWA Meta tags -->
-    <meta name="theme-color" content="#f0f5ff">
+    <meta name="theme-color" content="#9B1B28">
     <meta name="description" content="Apprends l'histoire de manière interactive !">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -15,68 +15,38 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Histoires Interactives">
     
-    <!-- Charger le CSS existant -->
+    <!-- Charger le CSS -->
     <link rel="stylesheet" href="charlemagne.css">
-    
-    <style>
-        /* Quelques styles supplémentaires juste pour cette page */
-        .chapters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .chapter-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .chapter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .chapter-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div id="home" class="page active">
             <div class="home-page">
-                <h1>Histoires Interactives</h1>
+                <h1>👑 Histoires Interactives</h1>
                 <p class="subtitle">Découvre et apprends l'histoire de manière ludique !</p>
                 
-                <div class="chapters-grid">
-                    <div class="chapter-card" onclick="window.location.href='chapitre-charlemagne.html'">
-                        <img src="images/charlemagne-icon.png" alt="Charlemagne" class="chapter-icon">
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="window.location.href='chapitre-charlemagne.html'">
+                        <div class="icon">
+                            <img src="images/charlemagne-icon.png" alt="Charlemagne" class="icon-img">
+                        </div>
                         <h3>Charlemagne et les Carolingiens</h3>
                         <p>Découvre l'empire carolingien et son fondateur</p>
                     </div>
                     
                     <!-- Futurs chapitres à ajouter -->
-                    <div class="chapter-card" style="opacity: 0.6; cursor: default;">
-                        <div class="icon">🏛️</div>
+                    <div class="menu-card disabled">
+                        <div class="icon">
+                            <span style="font-size: 2rem;">🏛️</span>
+                        </div>
                         <h3>La Rome Antique</h3>
                         <p>Bientôt disponible</p>
                     </div>
                     
-                    <div class="chapter-card" style="opacity: 0.6; cursor: default;">
-                        <div class="icon">⚔️</div>
+                    <div class="menu-card disabled">
+                        <div class="icon">
+                            <span style="font-size: 2rem;">⚔️</span>
+                        </div>
                         <h3>Les Chevaliers du Moyen Âge</h3>
                         <p>Bientôt disponible</p>
                     </div>
