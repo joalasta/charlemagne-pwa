@@ -8,29 +8,44 @@ function showPage(pageId) {
     // Afficher la page demandée
     document.getElementById(pageId).classList.add('active');
     
-    // Mettre à jour le titre de la navigation
-    updateNavTitle(pageId);
+    // Mettre à jour la navigation
+    updateNavigation(pageId);
     
     // Défiler vers le haut
     window.scrollTo(0, 0);
 }
 
-// Mise à jour du titre de la navigation
-function updateNavTitle(pageId) {
+// Mise à jour de la navigation
+function updateNavigation(pageId) {
+    const navBack = document.querySelector('.nav-back');
     const titleElement = document.querySelector('.nav-title');
     
-    switch(pageId) {
-        case 'lesson':
-            titleElement.textContent = '📚 La Leçon';
-            break;
-        case 'quiz':
-            titleElement.textContent = '🎯 Quiz';
-            break;
-        case 'timeline':
-            titleElement.textContent = '📅 Chronologie';
-            break;
-        default:
-            titleElement.textContent = '';
+    if (pageId === 'home') {
+        // Sur la page d'accueil du chapitre
+        navBack.textContent = '← Accueil';
+        navBack.href = 'index.html';
+        titleElement.textContent = '';
+    } else {
+        // Dans une sous-section (leçon, quiz, chronologie)
+        navBack.textContent = '← Retour';
+        navBack.href = '#';
+        navBack.onclick = function(e) {
+            e.preventDefault();
+            showPage('home');
+        };
+        
+        // Mettre à jour le titre selon la section
+        switch(pageId) {
+            case 'lesson':
+                titleElement.textContent = '📚 La Leçon';
+                break;
+            case 'quiz':
+                titleElement.textContent = '🎯 Quiz';
+                break;
+            case 'timeline':
+                titleElement.textContent = '📅 Chronologie';
+                break;
+        }
     }
 }
 
@@ -282,15 +297,10 @@ function toggleTimelineItem(item) {
     item.classList.toggle('active');
 }
 
-// Gestion de la navigation retour
-function handleBackNavigation() {
-    window.location.href = 'index.html';
-}
-
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialiser le titre de la navigation
-    updateNavTitle('home');
+    // Initialiser la navigation
+    updateNavigation('home');
     
     // Initialiser le score du quiz
     updateQuizScore();
