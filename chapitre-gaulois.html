@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Celtes et les Gaulois - Application d'apprentissage</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Découvre la civilisation des Celtes et des Gaulois, leurs innovations et leur société !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Gaulois App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="charlemagne.css">
+</head>
+<body>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/10</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/gaulois.png" alt="Guerrier gaulois" class="charlemagne-image">
+                </div>
+                <h1>Les Celtes et les Gaulois</h1>
+                <p class="subtitle">Découvre la première grande civilisation de notre territoire !</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>H4 - Les Celtes et les Gaulois</h2>
+                    
+                    <h3>1. L'arrivée des Celtes</h3>
+                    <p>
+                        À la fin de la Préhistoire, la plupart des peuples apprennent à fabriquer des outils et armes en métal. D'abord en <span class="highlight">bronze</span> (mélange de cuivre et d'étain) puis enfin en fer. En Europe, la <span class="highlight">maîtrise du fer</span> arrive vers <span class="date-important">-800 à -700</span>.
+                    </p>
+                    <p>
+                        Vers <span class="date-important">-1200</span>, un peuple venu d'Europe centrale envahit peu à peu tous les territoires situés plus à l'ouest. Ils franchissent le Rhin et s'installent sur notre territoire que les Romains appelleront la <span class="highlight">Gaule</span>.
+                    </p>
+                    
+                    <h3>2. La société gauloise</h3>
+                    <p>
+                        Les Gaulois comprennent de nombreux peuples qui partagent la langue et les coutumes. Ces peuples ont chacun leur chef et se font souvent la guerre. La Gaule, qui s'étend alors des Pyrénées au Rhin, est divisée en près de <span class="highlight">60 peuples</span>. À l'intérieur de chaque peuplade l'union n'existe pas.
+                    </p>
+                    <p>
+                        Dans la société gauloise, nous trouvons :
+                    </p>
+                    <ul>
+                        <li>Les <span class="highlight">riches</span>, les nobles ou chevaliers qui combattent et ne travaillent pas</li>
+                        <li>Les <span class="highlight">pauvres</span>, les paysans et les artisans qui sont souvent des esclaves</li>
+                        <li>Le <span class="highlight">clergé</span>, composé de druides, des prêtres très savants, un peu magiciens et médecins qui instruisent les jeunes nobles, rendent la justice et président les fêtes religieuses</li>
+                    </ul>
+                    
+                    <h3>3. Un peuple riche et fertile</h3>
+                    <p>
+                        Durant les <span class="date-important">500 ans</span> qu'ils demeurèrent maîtres de la Gaule, les Gaulois firent de nombreux progrès et transformèrent le pays. Ils éclaircirent les forêts, desséchèrent les marais, bâtirent des villages et quelques villes (<span class="highlight">Lutèce</span>, <span class="highlight">Bibracte</span>...).
+                    </p>
+                    <p>
+                        Excellents paysans, les Gaulois savent tirer le meilleur de leur terre. Ils produisent du blé et d'autres céréales en grande quantité. Ils cultivent la vigne et élèvent des bœufs, des porcs et des chevaux.
+                    </p>
+                    
+                    <h3>4. Artisans, industrie et commerce</h3>
+                    <p>
+                        Les Gaulois sont très ingénieux. Ils se servent du <span class="highlight">charrue à roues</span>, de faux et même de moissonneuses primitives. Ce sont eux qui inventent la fabrication du tonneau et celle du savon, fait de graisse d'animaux ou d'huile de plante.
+                    </p>
+                    <p>
+                        Leurs industries sont nombreuses :
+                    </p>
+                    <ul>
+                        <li>Ils forgent des outils et des armes en fer</li>
+                        <li>Leurs tisserands fabriquent de belles étoffes colorées</li>
+                        <li>Leurs potiers et verriers fabriquent des vases de toutes formes</li>
+                        <li>Leurs orfèvres confectionnent des bijoux magnifiques d'or et d'argent</li>
+                    </ul>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>-1200</strong> : Arrivée des Celtes en Europe de l'Ouest</li>
+                        <li><strong>-800</strong> : Maîtrise du fer en Europe</li>
+                        <li><strong>60</strong> : Nombre de peuples gaulois</li>
+                        <li><strong>500 ans</strong> : Durée de la domination gauloise</li>
+                        <li><strong>Innovations</strong> : Tonneau, charrue à roues, savon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur les Gaulois !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : En quelle année les Celtes sont-ils arrivés en Europe de l'Ouest ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', false)">-800</label>
+                            <label onclick="checkAnswer(this, 'q1', true)">-1200</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">-500</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">-100</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ Les Celtes sont arrivés d'Europe centrale vers -1200, bien avant la maîtrise du fer.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2 : Quand la maîtrise du fer est-elle arrivée en Europe ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">-1200 à -1000</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">-800 à -700</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">-500 à -400</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">-300 à -200</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ La maîtrise du fer est arrivée vers -800 à -700, après l'âge du bronze.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : En combien de peuples la Gaule était-elle divisée ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">40 peuples</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">60 peuples</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">80 peuples</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">100 peuples</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ La Gaule était divisée en environ 60 peuples différents, chacun avec son propre chef.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : Qui étaient les druides ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">Des guerriers</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">Des prêtres savants et juges</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Des artisans</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Des paysans</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ Les druides étaient des prêtres très savants qui servaient aussi de juges, de médecins et d'enseignants pour les jeunes nobles.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Quelle invention les Gaulois n'ont-ils PAS créée ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Le tonneau</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">La charrue à roues</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Le moulin à eau</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Le savon</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Les Gaulois ont inventé le tonneau, la charrue à roues et le savon, mais pas le moulin à eau.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6 : Que faisaient les Gaulois pauvres ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q6', false)">Ils étaient guerriers</label>
+                            <label onclick="checkAnswer(this, 'q6', true)">Ils étaient paysans ou artisans</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Ils étaient druides</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Ils étaient marchands</label>
+                        </div>
+                        <div class="explanation" id="exp-q6">
+                            ✨ Les Gaulois pauvres étaient souvent des esclaves qui travaillaient comme paysans ou artisans.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7 : Qu'est-ce que les Gaulois cultivaient ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q7', false)">Uniquement du blé</label>
+                            <label onclick="checkAnswer(this, 'q7', true)">Du blé, de la vigne et d'autres céréales</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Uniquement de la vigne</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Rien, ils étaient uniquement éleveurs</label>
+                        </div>
+                        <div class="explanation" id="exp-q7">
+                            ✨ Les Gaulois étaient d'excellents agriculteurs qui cultivaient diverses céréales, dont le blé, ainsi que la vigne.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8 : Quel métal les Gaulois ont-ils appris à utiliser après le bronze ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q8', false)">L'or</label>
+                            <label onclick="checkAnswer(this, 'q8', true)">Le fer</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">L'argent</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Le cuivre</label>
+                        </div>
+                        <div class="explanation" id="exp-q8">
+                            ✨ Après l'âge du bronze, les Gaulois ont maîtrisé le travail du fer, ce qui a révolutionné leurs outils et leurs armes.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9 : Quelle ville gauloise existait déjà ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q9', false)">Marseille</label>
+                            <label onclick="checkAnswer(this, 'q9', true)">Lutèce</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Bordeaux</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Lyon</label>
+                        </div>
+                        <div class="explanation" id="exp-q9">
+                            ✨ Lutèce (qui deviendra Paris) était l'une des villes gauloises importantes, tout comme Bibracte.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10 : Que fabriquaient les orfèvres gaulois ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q10', false)">Des armes</label>
+                            <label onclick="checkAnswer(this, 'q10', true)">Des bijoux en or et en argent</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Des vases</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Des tissus</label>
+                        </div>
+                        <div class="explanation" id="exp-q10">
+                            ✨ Les orfèvres gaulois étaient réputés pour leurs magnifiques bijoux en or et en argent.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes des Celtes et des Gaulois</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-1200</div>
+                            <div class="timeline-content">
+                                <h4>Arrivée des Celtes en Europe de l'Ouest</h4>
+                                <p>Les Celtes, venus d'Europe centrale, commencent à s'installer à l'ouest du Rhin, dans ce qui deviendra la Gaule.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-800</div>
+                            <div class="timeline-content">
+                                <h4>Maîtrise du fer</h4>
+                                <p>Les peuples d'Europe apprennent à travailler le fer, permettant la création d'outils et d'armes plus résistants.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-700 à -200</div>
+                            <div class="timeline-content">
+                                <h4>Développement de la civilisation gauloise</h4>
+                                <p>Les Gaulois développent leur agriculture, leur artisanat et leurs villes. Ils inventent notamment le tonneau et la charrue à roues.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-200</div>
+                            <div class="timeline-content">
+                                <h4>Apogée de la civilisation gauloise</h4>
+                                <p>La société gauloise atteint son apogée avec une organisation sociale complexe, des villes importantes et un artisanat développé.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Charger le JavaScript -->
+    <script src="charlemagne.js"></script>
+</body>
+</html> 
