@@ -50,8 +50,9 @@ body {
 
 /* Page d'accueil */
 .home-page {
+    margin-top: 80px;
     text-align: center;
-    padding: 50px 20px;
+    padding: 20px;
 }
 
 .home-page h1 {
@@ -193,7 +194,7 @@ body {
 /* Contenu des pages */
 .content-wrapper {
     margin-top: 80px;
-    padding: 0;
+    padding: 20px;
     background: white;
     min-height: calc(100vh - 80px);
 }
@@ -251,7 +252,7 @@ body {
 .quiz-container {
     background: transparent;
     border-radius: 0;
-    padding: 0;
+    padding: 20px;
     box-shadow: none;
 }
 
@@ -488,7 +489,7 @@ body {
 .timeline-container {
     background: transparent;
     border-radius: 0;
-    padding: 0;
+    padding: 20px;
     box-shadow: none;
 }
 
