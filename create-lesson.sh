@@ -4,6 +4,8 @@ echo "🎓 Assistant de création de leçon d'histoire"
 echo "==========================================\n"
 
 echo "📚 Je vais vous aider à créer une nouvelle leçon."
+echo "⚠️  À partir de maintenant, je me concentre UNIQUEMENT sur la création de cette nouvelle leçon.\n"
+
 echo "Le processus est le suivant :\n"
 echo "1. Vous allez partager les photos du cahier"
 echo "2. Je vais analyser le contenu et identifier le thème"
@@ -20,8 +22,9 @@ if [[ $response =~ ^[Oo]$ ]]; then
     echo "2. Je vais analyser le contenu et vous confirmer le thème identifié"
     echo "3. Après votre accord, je créerai la page avec le contenu structuré"
     echo "4. Je mettrai à jour l'index.html pour intégrer le nouveau chapitre"
-    echo "5. Une fois la page créée, je vous donnerai le prompt pour l'image"
-    echo "\nVous pouvez maintenant partager vos photos ! 📚"
+    echo "5. Une fois la page créée, je vous donnerai le prompt pour l'image\n"
+    
+    echo "Vous pouvez maintenant partager vos photos ! 📚"
 else
     echo "\n👋 D'accord, revenez quand vous aurez les photos du cahier."
 fi 
