@@ -307,6 +307,31 @@ body {
     transform: translateX(30px);
 }
 
+@media (max-width: 768px) {
+    /* Cible spécifiquement le div qui contient l'input et le bouton */
+    .question .options > div {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    /* Ajustement du champ de saisie */
+    .hard-mode-input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px 15px;
+      font-size: 16px; /* Évite le zoom automatique sur iOS */
+    }
+    
+    /* Ajustement du bouton */
+    .submit-answer {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+      padding: 12px 0;
+    }
+  }
+
 .hard-mode-input {
     width: 100%;
     padding: 10px 15px;
