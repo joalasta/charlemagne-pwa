@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlemagne et les Carolingiens - Application d'apprentissage</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Apprends l'histoire de Charlemagne et des Carolingiens de manière interactive !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Charlemagne App">
+    <link rel="stylesheet" href="charlemagne.css">
+</head>
+<body>
+    <!-- Barre de navigation unique, toujours visible -->
+    <div id="main-nav" class="nav-bar" style="justify-content: space-between; padding: 15px;">
+        <button class="back-btn" onclick="window.location.href='index.html'">← Accueil</button>
+        <h2 id="page-title"></h2>
+    </div>
+
+    <div class="container">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/charlemagne.png" alt="Charlemagne" class="charlemagne-image">
+                </div>
+                <h1>Charlemagne et les Carolingiens</h1>
+                <p class="subtitle">Apprends l'histoire de l'Empire carolingien !</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>H8 - L'empire de Charlemagne et les Carolingiens</h2>
+                    
+                    <h3>1. De Pépin le Bref à Charlemagne</h3>
+                    <p>
+                        <span class="date-important">En 732</span>, <span class="highlight">Charles Martel</span>, maire du palais, parvient à repousser les troupes musulmanes à Poitiers. Il devient un héros. Son fils, <span class="highlight">Pépin le Bref</span>, se fait couronner roi des Francs en <span class="date-important">751</span> avec le soutien du Pape. Il fonde ainsi la <span class="highlight">dynastie des Carolingiens</span>.
+                    </p>
+                    
+                    <!-- Reste du contenu de la leçon inchangé -->
+                    <h3>2. L'Empire de Charlemagne</h3>
+                    <p>
+                        L'empire de Charlemagne était <span class="highlight">vaste</span>. Il agrandit beaucoup son royaume au cours des guerres successives. Il constitue un immense empire dans lequel il impose la religion chrétienne et la capitale est <span class="highlight">Aix-la-Chapelle</span>.
+                    </p>
+                    
+                    <p>
+                        Pour bien gérer son empire, Charlemagne choisit des hommes fidèles et leur confie chacun une région : ce sont les <span class="highlight">comtes</span>. Ces comtes devaient faire appliquer les lois de l'empereur, rendre la justice et organiser l'armée. Charlemagne envoya aussi des <span class="highlight">missi dominici</span> contrôler que les comtes appliquaient ses ordres et respectaient ses autorités.
+                    </p>
+                    
+                    <h3>3. Les actions de Charlemagne dans le royaume de France</h3>
+                    <p>
+                        Charlemagne n'était pas très instruit, mais il aimait les arts et la culture. Il a développé les écoles religieuses et ouvre une école dans son palais. Il demande que des écoles soient ouvertes dans chaque évêché et chaque monastère. Il encourage le développement des arts et du savoir. Il favorise le travail des lettrés, des peintres, des monastères et des architectes.
+                    </p>
+                    
+                    <h3>4. La fin des Carolingiens</h3>
+                    <p>
+                        <span class="highlight">Louis le Pieux</span> (<span class="date-important">814-840</span>) succède à Charlemagne. Après sa mort, ses trois fils (Charles, Louis et Lothaire) se partagent l'empire au <span class="highlight">traité de Verdun en 843</span>. Les rois affaiblis ne sont plus obéis par les comtes et ne peuvent plus défendre l'empire. Les comtes choisissent un nouveau roi : <span class="highlight">Hugues Capet</span>, premier roi de la dynastie des Capétiens.
+                    </p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>732</strong> : Charles Martel arrête les musulmans à Poitiers</li>
+                        <li><strong>751</strong> : Pépin le Bref devient roi et fonde la dynastie des Carolingiens</li>
+                        <li><strong>768 à 814</strong> : Règne de Charlemagne</li>
+                        <li><strong>800</strong> : Charlemagne est couronné empereur par le Pape Léon III</li>
+                        <li><strong>843</strong> : Traité de Verdun - partage de l'empire</li>
+                        <li><strong>987</strong> : Fin de la dynastie des Carolingiens</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="score-live" id="liveScore">Score: 0/11</div>
+                
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur Charlemagne !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Contenu du quiz inchangé -->
+                    <div class="question">
+                        <h3>Question 1 : En quelle année Charles Martel a-t-il repoussé les troupes musulmanes à Poitiers ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', false)">751</label>
+                            <label onclick="checkAnswer(this, 'q1', true)">732</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">800</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">843</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ C'est en 732 que Charles Martel remporte la bataille de Poitiers, stoppant l'avancée des troupes musulmanes en Europe. Cette victoire lui vaut le surnom de "Martel" (le marteau).
+                        </div>
+                    </div>
+
+                    <!-- Répéter pour toutes les questions -->
+                    <!-- ... (reste du quiz inchangé) ... -->
+                    
+                    <button class="reset-quiz" onclick="resetQuiz()">🔄 Réinitialiser le quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes des Carolingiens</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <!-- Contenu de la chronologie inchangé -->
+                    <div class="timeline">
+                        <!-- ... (contenu de la chronologie inchangé) ... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script modifié pour gérer la navigation unique -->
+    <script>
+        // Charger le reste du JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser le titre de la page d'accueil
+            updatePageTitle('home');
+        });
+
+        // Fonction de navigation mise à jour
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Afficher la page demandée
+            document.getElementById(pageId).classList.add('active');
+            
+            // Mettre à jour le titre dans la barre de navigation
+            updatePageTitle(pageId);
+            
+            // Défiler vers le haut
+            window.scrollTo(0, 0);
+        }
+        
+        // Fonction pour mettre à jour le titre de la page
+        function updatePageTitle(pageId) {
+            const titleElement = document.getElementById('page-title');
+            
+            if (pageId === 'home') {
+                titleElement.textContent = ''; // Pas de titre sur la page d'accueil
+            } else if (pageId === 'lesson') {
+                titleElement.textContent = '📚 La Leçon';
+            } else if (pageId === 'quiz') {
+                titleElement.textContent = '🎯 Quiz';
+            } else if (pageId === 'timeline') {
+                titleElement.textContent = '📅 Chronologie';
+            }
+        }
+        
+        // Ajouter le reste du JavaScript de votre charlemagne.js ici
+        // Variables globales pour le quiz
+        let quizScore = 0;
+        let answeredQuestions = [];
+        let isHardMode = false;
+
+        // Questions et réponses pour le mode difficile
+        const hardModeAnswers = {
+            'q1': ['732'],
+            'q2': ['pépin le bref', 'pepin le bref'],
+            'q3': ['aix-la-chapelle', 'aix la chapelle'],
+            'q4': ['800'],
+            'q5': ['missi dominici'],
+            'q6': ['traité de verdun', 'traite de verdun', 'verdun'],
+            'q7': ['pépin le bref', 'pepin le bref'],
+            'q8': ['louis le pieux'],
+            'q9': ['écoles', 'ecoles'],
+            'q10': ['faire appliquer les lois, rendre la justice et organiser l\'armée', 'appliquer les lois', 'rendre la justice', 'organiser l\'armée'],
+            'q11': ['987']
+        };
+
+        // Basculer entre mode normal et difficile
+        function toggleHardMode() {
+            // Votre code pour toggleHardMode
+        }
+
+        function restoreNormalMode(questionId, optionsDiv) {
+            // Votre code pour restoreNormalMode
+        }
+
+        // Vérifier la réponse en mode difficile
+        function checkHardAnswer(questionId) {
+            // Votre code pour checkHardAnswer
+        }
+
+        // Quiz avec feedback immédiat
+        function checkAnswer(label, questionId, isCorrect) {
+            // Votre code pour checkAnswer
+        }
+
+        function updateQuizScore() {
+            document.getElementById('liveScore').textContent = `Score: ${quizScore}/11`;
+        }
+
+        function resetQuiz() {
+            // Votre code pour resetQuiz
+        }
+
+        // Chronologie interactive
+        function toggleTimelineItem(item) {
+            // Fermer tous les autres items
+            document.querySelectorAll('.timeline-item').forEach(i => {
+                if (i !== item) {
+                    i.classList.remove('active');
+                }
+            });
+            
+            // Basculer l'item cliqué
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

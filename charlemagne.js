@@ -258,3 +258,4 @@ function toggleTimelineItem(item) {
 window.onload = function() {
     updateQuizScore();
 };
+
