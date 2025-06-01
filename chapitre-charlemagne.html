@@ -18,8 +18,8 @@
 </head>
 <body>
     <!-- Barre de navigation unique, toujours visible -->
-    <div id="main-nav" class="nav-bar" style="justify-content: space-between; padding: 15px;">
-        <button class="back-btn" onclick="window.location.href='index.html'">← Accueil</button>
+    <div id="main-nav" class="nav-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+        <button class="back-btn" onclick="handleBackNavigation()">← Accueil</button>
         <h2 id="page-title"></h2>
     </div>
 
@@ -102,8 +102,12 @@
             </div>
         </div>
 
-        <!-- Page Quiz -->
         <div id="quiz" class="page">
+            <div class="nav-bar">
+                <button class="back-btn" onclick="showPage('home')">← Retour</button>
+                <h2>🎯 Quiz</h2>
+            </div>
+            
             <div class="content-wrapper">
                 <div class="score-live" id="liveScore">Score: 0/11</div>
                 
@@ -119,7 +123,6 @@
                         </label>
                     </div>
                     
-                    <!-- Contenu du quiz inchangé -->
                     <div class="question">
                         <h3>Question 1 : En quelle année Charles Martel a-t-il repoussé les troupes musulmanes à Poitiers ?</h3>
                         <div class="options">
@@ -133,8 +136,135 @@
                         </div>
                     </div>
 
-                    <!-- Répéter pour toutes les questions -->
-                    <!-- ... (reste du quiz inchangé) ... -->
+                    <div class="question">
+                        <h3>Question 2 : Qui était le père de Charlemagne ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">Charles Martel</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">Pépin le Bref</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Louis le Pieux</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Hugues Capet</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ Pépin le Bref était le père de Charlemagne. Il fut le premier roi de la dynastie carolingienne après avoir renversé le dernier roi mérovingien en 751.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : Quelle était la capitale de l'empire de Charlemagne ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">Paris</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Rome</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">Aix-la-Chapelle</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Poitiers</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ Aix-la-Chapelle (aujourd'hui Aachen en Allemagne) était la capitale de l'empire. Charlemagne y fit construire un magnifique palais avec une chapelle inspirée de l'architecture byzantine.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : En quelle année Charlemagne a-t-il été couronné empereur ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">768</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">800</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">814</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">843</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ Le jour de Noël 800, le pape Léon III couronne Charlemagne empereur d'Occident à Rome. C'est la renaissance de l'Empire romain d'Occident !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Comment s'appelaient les envoyés de l'empereur qui contrôlaient les comtes ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Les vassaux</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Les missi dominici</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Les évêques</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Les moines</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Les missi dominici ("envoyés du maître") étaient des inspecteurs royaux qui parcouraient l'empire pour vérifier que les comtes appliquaient correctement les ordres de l'empereur.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6 : Quel traité a partagé l'empire de Charlemagne en 843 ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q6', false)">Le traité de Paris</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Le traité d'Aix-la-Chapelle</label>
+                            <label onclick="checkAnswer(this, 'q6', true)">Le traité de Verdun</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Le traité de Rome</label>
+                        </div>
+                        <div class="explanation" id="exp-q6">
+                            ✨ Le traité de Verdun en 843 divise l'empire entre les trois petits-fils de Charlemagne : Charles le Chauve (France), Louis le Germanique (Allemagne) et Lothaire (Lotharingie).
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7 : Qui a fondé la dynastie des Carolingiens ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q7', false)">Charlemagne</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Charles Martel</label>
+                            <label onclick="checkAnswer(this, 'q7', true)">Pépin le Bref</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Louis le Pieux</label>
+                        </div>
+                        <div class="explanation" id="exp-q7">
+                            ✨ Pépin le Bref, fils de Charles Martel, fonde la dynastie des Carolingiens en 751 quand il devient roi des Francs. Le nom "Carolingien" vient de Carolus (Charles en latin).
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8 : Qui succède à Charlemagne après sa mort ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q8', false)">Charles le Chauve</label>
+                            <label onclick="checkAnswer(this, 'q8', true)">Louis le Pieux</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Lothaire</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Hugues Capet</label>
+                        </div>
+                        <div class="explanation" id="exp-q8">
+                            ✨ Louis le Pieux, fils de Charlemagne, règne de 814 à 840. Son surnom "le Pieux" vient de sa grande dévotion religieuse.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9 : Que demandait Charlemagne concernant l'éducation ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q9', false)">Que seuls les nobles soient éduqués</label>
+                            <label onclick="checkAnswer(this, 'q9', true)">Que des écoles soient ouvertes dans chaque évêché et monastère</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Que l'éducation soit interdite</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Que seuls les garçons soient éduqués</label>
+                        </div>
+                        <div class="explanation" id="exp-q9">
+                            ✨ Charlemagne a lancé la "Renaissance carolingienne" en ordonnant la création d'écoles dans tous les monastères et évêchés pour développer l'éducation et la culture.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10 : Quel était le rôle principal des comtes dans l'empire de Charlemagne ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q10', false)">Enseigner dans les écoles</label>
+                            <label onclick="checkAnswer(this, 'q10', true)">Faire appliquer les lois, rendre la justice et organiser l'armée</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Construire des églises</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Collecter les impôts seulement</label>
+                        </div>
+                        <div class="explanation" id="exp-q10">
+                            ✨ Les comtes étaient les représentants de Charlemagne dans chaque région. Ils devaient faire appliquer les lois de l'empereur, rendre la justice et organiser l'armée locale.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 11 : En quelle année se termine la dynastie des Carolingiens ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q11', false)">843</label>
+                            <label onclick="checkAnswer(this, 'q11', false)">887</label>
+                            <label onclick="checkAnswer(this, 'q11', true)">987</label>
+                            <label onclick="checkAnswer(this, 'q11', false)">1000</label>
+                        </div>
+                        <div class="explanation" id="exp-q11">
+                            ✨ En 987, Hugues Capet est élu roi de France, mettant fin à la dynastie carolingienne et débutant celle des Capétiens qui durera plus de 800 ans !
+                        </div>
+                    </div>
                     
                     <button class="reset-quiz" onclick="resetQuiz()">🔄 Réinitialiser le quiz</button>
                 </div>
@@ -143,119 +273,79 @@
 
         <!-- Page Chronologie -->
         <div id="timeline" class="page">
+            <div class="nav-bar">
+                <button class="back-btn" onclick="showPage('home')">← Retour</button>
+                <h2>📅 Chronologie</h2>
+            </div>
+            
             <div class="content-wrapper">
                 <div class="timeline-container">
                     <h2>Les dates importantes des Carolingiens</h2>
                     <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
                     
-                    <!-- Contenu de la chronologie inchangé -->
                     <div class="timeline">
-                        <!-- ... (contenu de la chronologie inchangé) ... -->
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">732</div>
+                            <div class="timeline-content">
+                                <h4>Bataille de Poitiers</h4>
+                                <p>Charles Martel repousse les troupes musulmanes et devient un héros dans tout le royaume franc.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">751</div>
+                            <div class="timeline-content">
+                                <h4>Naissance de la dynastie carolingienne</h4>
+                                <p>Pépin le Bref devient roi des Francs avec le soutien du Pape et fonde la dynastie des Carolingiens.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">768</div>
+                            <div class="timeline-content">
+                                <h4>Début du règne de Charlemagne</h4>
+                                <p>Charlemagne devient roi des Francs et commence son expansion territoriale.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">800</div>
+                            <div class="timeline-content">
+                                <h4>Couronnement impérial</h4>
+                                <p>Le jour de Noël, Charlemagne est couronné empereur d'Occident par le Pape Léon III à Rome.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">814</div>
+                            <div class="timeline-content">
+                                <h4>Mort de Charlemagne</h4>
+                                <p>Charlemagne meurt à Aix-la-Chapelle. Son fils Louis le Pieux lui succède.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">843</div>
+                            <div class="timeline-content">
+                                <h4>Traité de Verdun</h4>
+                                <p>L'empire est partagé entre les trois fils de Louis le Pieux : Charles, Louis et Lothaire.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">987</div>
+                            <div class="timeline-content">
+                                <h4>Fin des Carolingiens</h4>
+                                <p>Hugues Capet devient roi de France, marquant la fin de la dynastie carolingienne et le début des Capétiens.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Script modifié pour gérer la navigation unique -->
-    <script>
-        // Charger le reste du JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser le titre de la page d'accueil
-            updatePageTitle('home');
-        });
-
-        // Fonction de navigation mise à jour
-        function showPage(pageId) {
-            // Masquer toutes les pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            // Afficher la page demandée
-            document.getElementById(pageId).classList.add('active');
-            
-            // Mettre à jour le titre dans la barre de navigation
-            updatePageTitle(pageId);
-            
-            // Défiler vers le haut
-            window.scrollTo(0, 0);
-        }
-        
-        // Fonction pour mettre à jour le titre de la page
-        function updatePageTitle(pageId) {
-            const titleElement = document.getElementById('page-title');
-            
-            if (pageId === 'home') {
-                titleElement.textContent = ''; // Pas de titre sur la page d'accueil
-            } else if (pageId === 'lesson') {
-                titleElement.textContent = '📚 La Leçon';
-            } else if (pageId === 'quiz') {
-                titleElement.textContent = '🎯 Quiz';
-            } else if (pageId === 'timeline') {
-                titleElement.textContent = '📅 Chronologie';
-            }
-        }
-        
-        // Ajouter le reste du JavaScript de votre charlemagne.js ici
-        // Variables globales pour le quiz
-        let quizScore = 0;
-        let answeredQuestions = [];
-        let isHardMode = false;
-
-        // Questions et réponses pour le mode difficile
-        const hardModeAnswers = {
-            'q1': ['732'],
-            'q2': ['pépin le bref', 'pepin le bref'],
-            'q3': ['aix-la-chapelle', 'aix la chapelle'],
-            'q4': ['800'],
-            'q5': ['missi dominici'],
-            'q6': ['traité de verdun', 'traite de verdun', 'verdun'],
-            'q7': ['pépin le bref', 'pepin le bref'],
-            'q8': ['louis le pieux'],
-            'q9': ['écoles', 'ecoles'],
-            'q10': ['faire appliquer les lois, rendre la justice et organiser l\'armée', 'appliquer les lois', 'rendre la justice', 'organiser l\'armée'],
-            'q11': ['987']
-        };
-
-        // Basculer entre mode normal et difficile
-        function toggleHardMode() {
-            // Votre code pour toggleHardMode
-        }
-
-        function restoreNormalMode(questionId, optionsDiv) {
-            // Votre code pour restoreNormalMode
-        }
-
-        // Vérifier la réponse en mode difficile
-        function checkHardAnswer(questionId) {
-            // Votre code pour checkHardAnswer
-        }
-
-        // Quiz avec feedback immédiat
-        function checkAnswer(label, questionId, isCorrect) {
-            // Votre code pour checkAnswer
-        }
-
-        function updateQuizScore() {
-            document.getElementById('liveScore').textContent = `Score: ${quizScore}/11`;
-        }
-
-        function resetQuiz() {
-            // Votre code pour resetQuiz
-        }
-
-        // Chronologie interactive
-        function toggleTimelineItem(item) {
-            // Fermer tous les autres items
-            document.querySelectorAll('.timeline-item').forEach(i => {
-                if (i !== item) {
-                    i.classList.remove('active');
-                }
-            });
-            
-            // Basculer l'item cliqué
-            item.classList.toggle('active');
-        }
-    </script>
+    <!-- Charger le JavaScript -->
+    <script src="charlemagne.js"></script>
 </body>
 </html>

@@ -3,7 +3,27 @@ function showPage(pageId) {
     const pages = document.querySelectorAll('.page');
     pages.forEach(page => page.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
+    
+    // Mettre à jour le titre dans la barre de navigation
+    updatePageTitle(pageId);
+    
+    // Défiler vers le haut
     window.scrollTo(0, 0);
+}
+
+// Fonction pour mettre à jour le titre de la page
+function updatePageTitle(pageId) {
+    const titleElement = document.getElementById('page-title');
+    
+    if (pageId === 'home') {
+        titleElement.textContent = ''; // Pas de titre sur la page d'accueil
+    } else if (pageId === 'lesson') {
+        titleElement.textContent = '📚 La Leçon';
+    } else if (pageId === 'quiz') {
+        titleElement.textContent = '🎯 Quiz';
+    } else if (pageId === 'timeline') {
+        titleElement.textContent = '📅 Chronologie';
+    }
 }
 
 // Variables globales
@@ -254,8 +274,19 @@ function toggleTimelineItem(item) {
     item.classList.toggle('active');
 }
 
-// Initialisation au chargement
-window.onload = function() {
-    updateQuizScore();
-};
+// Gestion de la navigation retour
+function handleBackNavigation() {
+    const activePage = document.querySelector('.page.active')?.id;
+    
+    if (!activePage || activePage === 'home') {
+        window.location.href = 'index.html';
+    } else {
+        showPage('home');
+    }
+}
 
+// Initialisation au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    updatePageTitle('home');
+    updateQuizScore();
+});
