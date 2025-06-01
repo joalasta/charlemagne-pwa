@@ -105,26 +105,10 @@ body {
 .menu-card .icon {
     font-size: 3em;
     margin-bottom: 20px;
-    background: #e6efff;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-}
-
-.menu-card:nth-child(1) .icon {
-    background: #e6efff;
-    color: #4661e6;
-}
-
-.menu-card:nth-child(2) .icon {
-    background: #e6fff0;
-    color: #2ecc71;
-}
-
-.menu-card:nth-child(3) .icon {
-    background: #f7e6ff;
-    color: #9c27b0;
 }
 
 .charlemagne-container {
