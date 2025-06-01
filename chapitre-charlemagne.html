@@ -19,7 +19,7 @@
 <body>
     <!-- Barre de navigation unique, toujours visible -->
     <div id="main-nav" class="nav-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
-        <button class="back-btn" onclick="window.location.href = 'index.html'">← Accueil</button>
+        <button class="back-btn" onclick="handleBackNavigation()">← Accueil</button>
         <h2 id="page-title"></h2>
     </div>
 
@@ -61,7 +61,7 @@
         <!-- Page Leçon -->
         <div id="lesson" class="page">
             <div class="nav-bar">
-                <button class="back-btn" onclick="window.location.href = 'index.html'">← Retour</button>
+                <button class="back-btn" onclick="handleBackNavigation()">← Retour</button>
                 <h2>📚 La Leçon</h2>
             </div>
             <div class="content-wrapper">
@@ -108,7 +108,7 @@
 
         <div id="quiz" class="page">
             <div class="nav-bar">
-                <button class="back-btn" onclick="window.location.href = 'index.html'">← Retour</button>
+                <button class="back-btn" onclick="handleBackNavigation()">← Retour</button>
                 <h2>🎯 Quiz</h2>
             </div>
             
@@ -278,7 +278,7 @@
         <!-- Page Chronologie -->
         <div id="timeline" class="page">
             <div class="nav-bar">
-                <button class="back-btn" onclick="window.location.href = 'index.html'">← Retour</button>
+                <button class="back-btn" onclick="handleBackNavigation()">← Retour</button>
                 <h2>📅 Chronologie</h2>
             </div>
             

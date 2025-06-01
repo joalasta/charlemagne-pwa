@@ -276,17 +276,19 @@ function toggleTimelineItem(item) {
 
 // Gestion de la navigation retour
 function handleBackNavigation() {
-    const activePage = document.querySelector('.page.active')?.id;
-    
-    if (!activePage || activePage === 'home') {
-        window.location.href = 'index.html';
-    } else {
-        showPage('home');
-    }
+    window.location.href = 'index.html';
 }
 
 // Initialisation au chargement
 document.addEventListener('DOMContentLoaded', function() {
+    // Ajouter les écouteurs d'événements pour les boutons retour
+    document.querySelectorAll('.back-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleBackNavigation();
+        });
+    });
+    
     updatePageTitle('home');
     updateQuizScore();
 });
