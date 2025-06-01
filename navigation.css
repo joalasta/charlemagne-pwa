@@ -16,17 +16,18 @@
 .nav-back {
     display: flex;
     align-items: center;
-    color: #4661e6;
+    color: white;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 1rem;
     padding: 8px 16px;
     border-radius: 8px;
     transition: background-color 0.2s;
+    background-color: #4661e6;
 }
 
 .nav-back:hover {
-    background-color: #f0f5ff;
+    background-color: #3651d6;
 }
 
 .nav-title {
