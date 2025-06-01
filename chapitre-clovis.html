@@ -21,10 +21,15 @@
     <!-- Navigation principale -->
     <nav class="main-nav">
         <a href="index.html" class="nav-back">← Accueil</a>
-        <h2 class="nav-title"></h2>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/12</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
     </nav>
 
-    <div class="container">
+    <!-- Contenu principal -->
+    <main class="main-content">
         <!-- Page d'accueil -->
         <div id="home" class="page active">
             <div class="home-page">
@@ -117,8 +122,6 @@
         <!-- Page Quiz -->
         <div id="quiz" class="page">
             <div class="content-wrapper">
-                <div class="score-live" id="liveScore">Score: 0/12</div>
-                
                 <div class="quiz-container">
                     <h2>Teste tes connaissances sur Clovis !</h2>
                     
@@ -286,8 +289,6 @@
                             ✨ Les maires du palais dirigeaient réellement le royaume pendant que les rois fainéants ne gouvernaient plus. Charles Martel était l'un de ces maires du palais !
                         </div>
                     </div>
-                    
-                    <button class="reset-quiz" onclick="resetQuiz()">🔄 Réinitialiser le quiz</button>
                 </div>
             </div>
         </div>
@@ -367,7 +368,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Charger le JavaScript -->
     <script src="charlemagne.js"></script>

@@ -50,7 +50,7 @@ body {
 
 /* Page d'accueil */
 .home-page {
-    margin-top: 80px;
+    margin-top: 0px;
     text-align: center;
     padding: 20px;
 }
@@ -449,7 +449,7 @@ body {
     font-weight: 400;
     cursor: pointer;
     display: block;
-    margin: auto;
+    margin-left: 50px;
     transition: background 0.3s ease;
 }
 
@@ -459,15 +459,16 @@ body {
 
 .score-live {
     position: fixed;
-    top: 15px;
+    top: 0px;
     right: 24px;
     background: white;
     padding: 15px 20px;
     border-radius: 10px;
     /*box-shadow: 0 5px 15px rgba(0,0,0,0.1);*/
-    font-size: 1.2em;
+    font-size: 1em;
     color: #2ecc71;
     font-weight: 600;
+    justify-content: right;
 }
 
 /* Chronologie - Sans effet boîte */
