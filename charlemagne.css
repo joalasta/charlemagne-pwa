@@ -179,7 +179,7 @@ body {
 /* Contenu des pages */
 .content-wrapper {
     margin-top: 20px;
-    padding: 0px;
+    padding-bottom: 10px;
     background: rgb(255, 255, 255);
     min-height: calc(100vh - 80px);
 }
