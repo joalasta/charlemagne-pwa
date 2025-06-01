@@ -21,7 +21,11 @@
     <!-- Navigation principale -->
     <nav class="main-nav">
         <a href="index.html" class="nav-back">← Accueil</a>
-        <h2 class="nav-title"></h2>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/11</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄 Réinitialiser</button>
     </nav>
 
     <!-- Contenu principal -->
@@ -107,8 +111,6 @@
         <!-- Page Quiz -->
         <div id="quiz" class="page">
             <div class="content-wrapper">
-                <div class="score-live" id="liveScore">Score: 0/11</div>
-                
                 <div class="quiz-container">
                     <h2>Teste tes connaissances sur Charlemagne !</h2>
                     
@@ -263,8 +265,6 @@
                             ✨ En 987, Hugues Capet est élu roi de France, mettant fin à la dynastie carolingienne et débutant celle des Capétiens qui durera plus de 800 ans !
                         </div>
                     </div>
-                    
-                    <button class="reset-quiz" onclick="resetQuiz()">🔄 Réinitialiser le quiz</button>
                 </div>
             </div>
         </div>

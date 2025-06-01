@@ -8,6 +8,13 @@ function showPage(pageId) {
     // Afficher la page demandée
     document.getElementById(pageId).classList.add('active');
     
+    // Gérer la classe quiz-page sur le body
+    if (pageId === 'quiz') {
+        document.body.classList.add('quiz-page');
+    } else {
+        document.body.classList.remove('quiz-page');
+    }
+    
     // Mettre à jour la navigation
     updateNavigation(pageId);
     
@@ -18,13 +25,18 @@ function showPage(pageId) {
 // Mise à jour de la navigation
 function updateNavigation(pageId) {
     const navBack = document.querySelector('.nav-back');
-    const titleElement = document.querySelector('#page-title');
+    const titleElement = document.querySelector('.nav-title');
+    const scoreElement = document.querySelector('.score-live');
+    const resetButton = document.querySelector('.nav-reset');
+    
+    // Masquer le score et le bouton par défaut
+    scoreElement.style.display = 'none';
+    resetButton.style.display = 'none';
     
     if (pageId === 'home') {
         // Sur la page d'accueil du chapitre
         navBack.textContent = '← Accueil';
         navBack.href = 'index.html';
-        // Supprimer tout gestionnaire d'événements précédent
         navBack.onclick = null;
         titleElement.textContent = '';
     } else {
@@ -43,6 +55,9 @@ function updateNavigation(pageId) {
                 break;
             case 'quiz':
                 titleElement.textContent = '🎯 Quiz';
+                // Afficher le score et le bouton uniquement sur la page quiz
+                scoreElement.style.display = 'block';
+                resetButton.style.display = 'block';
                 break;
             case 'timeline':
                 titleElement.textContent = '📅 Chronologie';
@@ -272,13 +287,28 @@ function resetQuiz() {
     answeredQuestions = [];
     updateQuizScore();
     
-    // Réinitialiser toutes les questions
-    const labels = document.querySelectorAll('.options label');
-    labels.forEach(label => {
-        label.classList.remove('correct', 'incorrect');
-        label.style.pointerEvents = 'auto';
-        label.style.cursor = 'pointer';
-    });
+    if (isHardMode) {
+        // Réinitialiser les champs de saisie en mode difficile
+        document.querySelectorAll('.hard-mode-input').forEach(input => {
+            input.value = '';
+            input.disabled = false;
+            input.classList.remove('correct', 'incorrect');
+            input.placeholder = 'Tapez votre réponse...';
+        });
+        
+        // Réactiver les boutons de validation
+        document.querySelectorAll('.submit-answer').forEach(button => {
+            button.disabled = false;
+        });
+    } else {
+        // Réinitialiser les labels en mode normal
+        const labels = document.querySelectorAll('.options label');
+        labels.forEach(label => {
+            label.classList.remove('correct', 'incorrect');
+            label.style.pointerEvents = 'auto';
+            label.style.cursor = 'pointer';
+        });
+    }
     
     // Cacher les explications
     document.querySelectorAll('.explanation').forEach(exp => {
@@ -301,6 +331,12 @@ function toggleTimelineItem(item) {
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
+    // Vérifier si on est sur la page quiz au chargement
+    const quizPage = document.querySelector('#quiz.active');
+    if (quizPage) {
+        document.body.classList.add('quiz-page');
+    }
+    
     // Initialiser la navigation
     updateNavigation('home');
     

@@ -4,13 +4,13 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
     background: white;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-back {
@@ -19,22 +19,64 @@
     color: white;
     text-decoration: none;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1em;
     padding: 8px 16px;
     border-radius: 8px;
     transition: background-color 0.2s;
     background-color: #4661e6;
+    margin-right: 20px;
 }
 
 .nav-back:hover {
     background-color: #3651d6;
 }
 
+.nav-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
 .nav-title {
-    margin-left: 20px;
-    font-size: 1.25rem;
-    font-weight: 600;
+    margin: 0;
+    font-size: 1.2rem;
     color: #2d3748;
+}
+
+.score-live {
+    display: none; /* Masqué par défaut */
+    position: static;
+    background: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #2ecc71;
+    font-weight: 400;
+    box-shadow: none;
+}
+
+.nav-reset {
+    display: none; /* Masqué par défaut */
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Ces éléments ne seront visibles que sur la page quiz */
+body.quiz-page .score-live,
+body.quiz-page .nav-reset {
+    display: block;
+}
+
+.nav-reset:hover {
+    background: #27ae60;
 }
 
 /* Structure principale */
@@ -54,13 +96,27 @@
 /* Responsive */
 @media (max-width: 768px) {
     .main-nav {
-        padding: 0 16px;
+        padding: 0.8rem;
     }
-
+    
     .nav-back {
+        font-size: 0.9rem;
         padding: 6px 12px;
     }
-
+    
+    .nav-title {
+        font-size: 1rem;
+    }
+    
+    .score-live {
+        font-size: 0.9rem;
+    }
+    
+    .nav-reset {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
     .page {
         padding: 16px;
     }
