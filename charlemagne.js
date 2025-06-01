@@ -1,28 +1,36 @@
 // Navigation entre les pages
 function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
+    // Masquer toutes les pages
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    
+    // Afficher la page demandée
     document.getElementById(pageId).classList.add('active');
     
-    // Mettre à jour le titre dans la barre de navigation
-    updatePageTitle(pageId);
+    // Mettre à jour le titre de la navigation
+    updateNavTitle(pageId);
     
     // Défiler vers le haut
     window.scrollTo(0, 0);
 }
 
-// Fonction pour mettre à jour le titre de la page
-function updatePageTitle(pageId) {
-    const titleElement = document.getElementById('page-title');
+// Mise à jour du titre de la navigation
+function updateNavTitle(pageId) {
+    const titleElement = document.querySelector('.nav-title');
     
-    if (pageId === 'home') {
-        titleElement.textContent = ''; // Pas de titre sur la page d'accueil
-    } else if (pageId === 'lesson') {
-        titleElement.textContent = '📚 La Leçon';
-    } else if (pageId === 'quiz') {
-        titleElement.textContent = '🎯 Quiz';
-    } else if (pageId === 'timeline') {
-        titleElement.textContent = '📅 Chronologie';
+    switch(pageId) {
+        case 'lesson':
+            titleElement.textContent = '📚 La Leçon';
+            break;
+        case 'quiz':
+            titleElement.textContent = '🎯 Quiz';
+            break;
+        case 'timeline':
+            titleElement.textContent = '📅 Chronologie';
+            break;
+        default:
+            titleElement.textContent = '';
     }
 }
 
@@ -279,16 +287,11 @@ function handleBackNavigation() {
     window.location.href = 'index.html';
 }
 
-// Initialisation au chargement
+// Initialisation
 document.addEventListener('DOMContentLoaded', function() {
-    // Ajouter les écouteurs d'événements pour les boutons retour
-    document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            handleBackNavigation();
-        });
-    });
+    // Initialiser le titre de la navigation
+    updateNavTitle('home');
     
-    updatePageTitle('home');
+    // Initialiser le score du quiz
     updateQuizScore();
 });

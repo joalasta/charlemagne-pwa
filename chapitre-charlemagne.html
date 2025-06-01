@@ -14,16 +14,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Charlemagne App">
+    <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="charlemagne.css">
 </head>
 <body>
-    <!-- Barre de navigation unique, toujours visible -->
-    <div id="main-nav" class="nav-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
-        <button class="back-btn" onclick="handleBackNavigation()">← Accueil</button>
-        <h2 id="page-title"></h2>
-    </div>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <h2 class="nav-title"></h2>
+    </nav>
 
-    <div class="container">
+    <!-- Contenu principal -->
+    <main class="main-content">
         <!-- Page d'accueil -->
         <div id="home" class="page active">
             <div class="home-page">
@@ -334,7 +336,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Charger le JavaScript -->
     <script src="charlemagne.js"></script>
