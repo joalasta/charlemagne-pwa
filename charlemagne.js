@@ -24,6 +24,8 @@ function updateNavigation(pageId) {
         // Sur la page d'accueil du chapitre
         navBack.textContent = '← Accueil';
         navBack.href = 'index.html';
+        // Supprimer tout gestionnaire d'événements précédent
+        navBack.onclick = null;
         titleElement.textContent = '';
     } else {
         // Dans une sous-section (leçon, quiz, chronologie)
