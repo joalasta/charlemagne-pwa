@@ -4,50 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Romains et la guerre des Gaules - Histoire CM1</title>
-    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Découvre la conquête de la Gaule par Jules César !">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Romains App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="back-button">←</a>
-        <h1>Les Romains et la guerre des Gaules</h1>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/5</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
     </nav>
 
-    <main class="lesson-content">
-        <div class="chapter-icon">
-            <img src="images/romains-icon.png" alt="Vercingétorix" class="icon-img">
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/romains-icon.png" alt="Jules César" class="charlemagne-image">
+                </div>
+                <h1>Les Romains et la guerre des Gaules</h1>
+                <p class="subtitle">La conquête de la Gaule par Jules César</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <section>
-            <h2>1. Les Romains</h2>
-            
-            <h3>Un puissant voisin</h3>
-            <p>Les Romains se sont déjà peu à peu établis dans le sud de la Gaule. Ils connaissent ses richesses. Un de leurs chefs, Jules César, va réussir à mettre à profit les discordes entre tribus gauloises.</p>
-            <p>Rome fut fondée en <span class="date">753 av. J.-C.</span> Peu à peu cette petite cité va étendre sa domination sur toute la péninsule italienne. D'abord dirigée par des rois, elle devient une République dirigée par des magistrats élus et par une importante assemblée, le Sénat.</p>
-            
-            <h3>Une civilisation brillante</h3>
-            <p>Les Romains ont développé une civilisation brillante. Ils exploitent de grands domaines agricoles et ils sont de bons artisans. Ils pratiquent le commerce. Ils couvrent leur territoire de nombreuses routes pavées et leurs bateaux circulent dans toute la Méditerranée et jusqu'en Angleterre (qu'on appelle alors la Bretagne).</p>
-            <p>Ils construisent de très belles villes, bien organisées et riches en monuments. Grâce à leur armée de légionnaires bien disciplinés conduite par de bons généraux, les Romains peuvent conquérir peu à peu presque tous les pays qui entourent la Méditerranée. Tous ces pays sont transformés en provinces romaines et leurs habitants adoptent, au fil du temps, la civilisation de Rome.</p>
-        </section>
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>Les Romains et la guerre des Gaules</h2>
+                    
+                    <h3>1. Un puissant voisin</h3>
+                    <p>Les Romains se sont déjà peu à peu établis dans le sud de la Gaule. Ils connaissent ses richesses. Un de leurs chefs, Jules César, va réussir à mettre à profit les discordes entre tribus gauloises.</p>
+                    <p>Rome fut fondée en <span class="date-important">753 av. J.-C.</span> Peu à peu cette petite cité va étendre sa domination sur toute la péninsule italienne. D'abord dirigée par des rois, elle devient une République dirigée par des magistrats élus et par une importante assemblée, le Sénat.</p>
+                    
+                    <h3>2. Une civilisation brillante</h3>
+                    <p>Les Romains ont développé une civilisation brillante. Ils exploitent de grands domaines agricoles et ils sont de bons artisans. Ils pratiquent le commerce. Ils couvrent leur territoire de nombreuses routes pavées et leurs bateaux circulent dans toute la Méditerranée et jusqu'en Angleterre (qu'on appelle alors la Bretagne).</p>
+                    
+                    <h3>3. La guerre des Gaules</h3>
+                    <p>En <span class="date-important">58 av. J.-C.</span>, Jules César est nommé gouverneur de la Gaule du Sud. Il profite des querelles entre les peuples gaulois pour intervenir dans leurs affaires. En huit ans, il conquiert toute la Gaule.</p>
+                    <p>En <span class="date-important">52 av. J.-C.</span>, un jeune chef arverne, Vercingétorix, réussit à unir la plupart des peuples gaulois contre les Romains. Il remporte d'abord quelques succès mais doit se réfugier dans l'oppidum d'Alésia.</p>
+                    
+                    <h3>4. Le siège d'Alésia</h3>
+                    <p>Le siège d'Alésia est une bataille décisive de la fin de la guerre des Gaules qui voit la défaite d'une coalition de peuples gaulois menés par Vercingétorix face à l'armée romaine de Jules César. Elle se déroule entre les mois de juillet et de septembre en <span class="date-important">52 av. J.-C.</span></p>
+                    <p>César fait construire autour d'Alésia deux formidables lignes de fortification et commence le siège de la ville. Après une bataille désespérée, les guerriers gaulois mourant de faim, Vercingétorix prend la décision de déposer les armes. Vercingétorix et ses hommes sont faits prisonniers. Le chef gaulois est exécuté 6 ans plus tard à Rome. C'est la fin de la résistance Gauloise.</p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>753 av. J.-C.</strong> : Fondation de Rome</li>
+                        <li><strong>58 av. J.-C.</strong> : Début de la guerre des Gaules</li>
+                        <li><strong>52 av. J.-C.</strong> : Siège d'Alésia et défaite de Vercingétorix</li>
+                        <li><strong>46 av. J.-C.</strong> : Exécution de Vercingétorix à Rome</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <section>
-            <h2>2. La guerre des Gaules</h2>
-            
-            <h3>Jules César</h3>
-            <p>En <span class="date">58 av. J.-C.</span>, un important chef militaire nommé Jules César se porte au secours des Gaulois, menacés par des hordes venues d'Helvétie (Suisse) et de Germanie. Les Gaulois ont fait appel à Rome.</p>
-            <p>Après avoir rétabli la paix, les Romains ne rentrent pas chez eux. Au contraire, ils s'établissent peu à peu dans toute la Gaule, imposant par la force la loi romaine aux Gaulois, trop divisés pour pouvoir résister.</p>
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur les Romains !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : En quelle année Rome a-t-elle été fondée ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', false)">800 av. J.-C.</label>
+                            <label onclick="checkAnswer(this, 'q1', true)">753 av. J.-C.</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">700 av. J.-C.</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">600 av. J.-C.</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ Rome fut fondée en 753 av. J.-C. et devint progressivement une puissante République.
+                        </div>
+                    </div>
 
-            <h3>La révolte de Vercingétorix</h3>
-            <p>Après 6 ans de conquête, César croyant la Gaule soumise repart en Italie. Un jeune chef arverne, Vercingétorix, parvient à unifier les tribus et lançant une vaste révolte contre les troupes romaines. César précipite son retour en Gaule pour reprendre le contrôle de ses armées.</p>
-            <p>Vercingétorix ordonne de brûler les villages et les villes, les provisions et les récoltes pour affamer les Romains.</p>
-            <p>À la poursuite de Vercingétorix, Jules César se dirige vers Gergovie, la capitale, l'oppidum de Vercingétorix. Là, les Gaulois réussissent à vaincre César qui doit se replier.</p>
+                    <div class="question">
+                        <h3>Question 2 : Qui dirigeait la République romaine ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">Un roi</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Un empereur</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">Des magistrats élus et le Sénat</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Les druides</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ La République romaine était dirigée par des magistrats élus et le Sénat, une importante assemblée.
+                        </div>
+                    </div>
 
-            <h3>Le siège d'Alésia</h3>
-            <p>Le siège d'Alésia est une bataille décisive de la fin de la guerre des Gaules qui voit la défaite d'une coalition de peuples gaulois menés par Vercingétorix face à l'armée romaine de Jules César. Elle se déroule entre les mois de juillet et de septembre en <span class="date">52 av. J.-C.</span></p>
-            <p>César fait construire autour d'Alésia deux formidables lignes de fortification et commence le siège de la ville. Après une bataille désespérée, les guerriers gaulois mourant de faim, Vercingétorix prend la décision de déposer les armes. Vercingétorix et ses hommes sont faits prisonniers. Le chef gaulois est exécuté 6 ans plus tard à Rome. C'est la fin de la résistance Gauloise.</p>
-        </section>
+                    <div class="question">
+                        <h3>Question 3 : En quelle année Jules César devient-il gouverneur de la Gaule du Sud ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', true)">58 av. J.-C.</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">52 av. J.-C.</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">46 av. J.-C.</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">60 av. J.-C.</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ En 58 av. J.-C., Jules César devient gouverneur de la Gaule du Sud, ce qui marque le début de la guerre des Gaules.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : Où se déroule la bataille finale entre Vercingétorix et César ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">Gergovie</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">Alésia</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Bibracte</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Rome</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ La bataille finale se déroule à Alésia, où Vercingétorix finit par se rendre à César après un long siège.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Que fait César autour d'Alésia ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', true)">Il construit deux lignes de fortification</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Il brûle la ville</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Il négocie avec Vercingétorix</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Il attend les renforts</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ César fait construire deux formidables lignes de fortification autour d'Alésia pour empêcher toute fuite ou secours extérieur.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes de la guerre des Gaules</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-753</div>
+                            <div class="timeline-content">
+                                <h4>Fondation de Rome</h4>
+                                <p>Rome est fondée et deviendra progressivement une puissante République.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-58</div>
+                            <div class="timeline-content">
+                                <h4>Début de la guerre des Gaules</h4>
+                                <p>Jules César devient gouverneur de la Gaule du Sud et commence sa conquête.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-52</div>
+                            <div class="timeline-content">
+                                <h4>Siège d'Alésia</h4>
+                                <p>Vercingétorix se rend à César après un long siège. C'est la fin de la résistance gauloise.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-46</div>
+                            <div class="timeline-content">
+                                <h4>Mort de Vercingétorix</h4>
+                                <p>Le chef gaulois est exécuté à Rome après six ans de captivité.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
+    <!-- Charger le JavaScript -->
     <script src="scripts/main.js"></script>
 </body>
 </html> 

@@ -4,53 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Gallo-Romains et le Christianisme - Histoire CM1</title>
-    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Apprends l'histoire des Gallo-Romains et du Christianisme de manière interactive !">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Gallo-Romains App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="back-button">←</a>
-        <h1>Les Gallo-Romains et le Christianisme</h1>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/5</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
     </nav>
 
-    <main class="lesson-content">
-        <div class="chapter-icon">
-            <img src="images/gallo-romains-icon.png" alt="Gallo-Romain" class="icon-img">
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/gallo-romains-icon.png" alt="Gallo-Romain" class="charlemagne-image">
+                </div>
+                <h1>Les Gallo-Romains et le Christianisme</h1>
+                <p class="subtitle">La transformation de la Gaule et l'arrivée du christianisme</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <section>
-            <h2>1. Les Gallo-Romains</h2>
-            
-            <h3>La paix romaine</h3>
-            <p>Après la soumission de Vercingétorix, il y eut bien quelques révoltes mais les Romains les punirent cruellement et établirent la paix dans toute la Gaule. Cette paix romaine (Pax Romana) dura près de 500 ans.</p>
-            
-            <h3>Les citoyens romains</h3>
-            <p>Les Gaulois, peu à peu, cherchèrent à imiter la culture romaine. Ils se mirent à porter un grand manteau de drap blanc relevé sur l'épaule, la toge. Ils apprirent à parler le latin qui était la langue des Romains.</p>
-            <p>Beaucoup de Gaulois s'engagèrent dans la légion romaine. D'autres devinrent fonctionnaires, magistrats, sénateurs. Un jour, tous les Gaulois furent déclarés citoyens romains.</p>
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>Les Gallo-Romains et le Christianisme</h2>
+                    
+                    <h3>1. La paix romaine</h3>
+                    <p>Après la soumission de Vercingétorix, il y eut bien quelques révoltes mais les Romains les punirent cruellement et établirent la paix dans toute la Gaule. Cette paix romaine (Pax Romana) dura près de 500 ans.</p>
+                    
+                    <h3>2. Les citoyens romains</h3>
+                    <p>Les Gaulois, peu à peu, cherchèrent à imiter la culture romaine. Ils se mirent à porter un grand manteau de drap blanc relevé sur l'épaule, la toge. Ils apprirent à parler le latin qui était la langue des Romains.</p>
+                    <p>Beaucoup de Gaulois s'engagèrent dans la légion romaine. D'autres devinrent fonctionnaires, magistrats, sénateurs. Un jour, tous les Gaulois furent déclarés citoyens romains.</p>
+                    
+                    <h3>3. La villa gallo-romaine</h3>
+                    <p>Les campagnes gauloises ont moins touché par la romanisation. Elles conservaient longtemps leurs anciennes coutumes et leur mode de vie celtique.</p>
+                    <p>De riches Gallo-romains y firent construire de belles propriétés nommées "villas". Elles comprenaient au centre l'habitation du maître, confortable et luxueuse. Autour s'étendaient de nombreux bâtiments : étables, greniers, logements pour les esclaves.</p>
+                    <p>Dans la campagne voisine s'élevaient les cabanes des fermiers qui travaillaient pour lui. Le maître surveillait tout son domaine, allait à la chasse, faisait de la musique ou donnait des fêtes somptueuses.</p>
+                    
+                    <h3>4. La christianisation</h3>
+                    <p>L'ancienne religion des druides avait rapidement disparu. Les Gallo-Romains adorèrent alors les dieux romains : Jupiter, Mars, Neptune et surtout durant plusieurs siècles le culte de l'empereur de Rome.</p>
+                    <p>Au début du <span class="date-important">4ème siècle</span>, l'empereur de Rome Constantin s'appuya sur les chrétiens pour accéder au pouvoir. En retour, il éleva la religion chrétienne au rang de religion officielle de tout l'empire romain.</p>
+                    <p>Les anciennes religions furent peu à peu interdites, les temples des anciens dieux furent détruits ou transformés en églises chrétiennes.</p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>-50</strong> : Début de la Pax Romana en Gaule</li>
+                        <li><strong>212</strong> : Tous les Gaulois deviennent citoyens romains</li>
+                        <li><strong>313</strong> : Édit de Milan - Le christianisme devient religion officielle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-            <h3>La villa gallo-romaine</h3>
-            <p>Les campagnes gauloises ont moins touché par la romanisation. Elles conservaient longtemps leurs anciennes coutumes et leur mode de vie celtique.</p>
-            <p>De riches Gallo-romains y firent construire de belles propriétés nommées "villas". Elles comprenaient au centre l'habitation du maître, confortable et luxueuse. Autour s'étendaient de nombreux bâtiments : étables, greniers, logements pour les esclaves.</p>
-            <p>Dans la campagne voisine s'élevaient les cabanes des fermiers qui travaillaient pour lui. Le maître surveillait tout son domaine, allait à la chasse, faisait de la musique ou donnait des fêtes somptueuses.</p>
-        </section>
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur les Gallo-Romains !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : Combien de temps a duré la Pax Romana ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', false)">100 ans</label>
+                            <label onclick="checkAnswer(this, 'q1', true)">500 ans</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">200 ans</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">1000 ans</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ La Pax Romana (paix romaine) a duré près de 500 ans en Gaule, une période de stabilité exceptionnelle !
+                        </div>
+                    </div>
 
-        <section>
-            <h2>2. La christianisation</h2>
-            
-            <h3>L'ancienne religion</h3>
-            <p>L'ancienne religion des druides avait rapidement disparu. Les Gallo-Romains adorèrent alors les dieux romains : Jupiter, Mars, Neptune et surtout durant plusieurs siècles le culte de l'empereur de Rome.</p>
-            
-            <h3>L'arrivée du christianisme</h3>
-            <p>Au début du 4ème siècle, l'empereur de Rome Constantin s'appuya sur les chrétiens pour accéder au pouvoir. En retour, il éleva la religion chrétienne au rang de religion officielle de tout l'empire romain.</p>
-            <p>Les anciennes religions furent peu à peu interdites, les temples des anciens dieux furent détruits ou transformés en églises chrétiennes.</p>
-            
-            <h3>Les persécutions et la résistance</h3>
-            <p>Mais comme ils n'adoraient qu'un seul dieu, ils refusaient d'adorer ceux de Rome et surtout le culte de l'empereur. Les empereurs ordonnèrent alors de les faire disparaître de l'Empire.</p>
-            <p>Les chrétiens furent alors persécutés, condamnés aux pires supplices dans les arènes (dévorés par les lions, brûlés, décapités, démembrés ou torturés au fond des prisons).</p>
-            <p>Mais les persécutions n'empêchèrent pas cette nouvelle religion de s'étendre. Cachés, les chrétiens poursuivaient leur culte en secret. Le nombre de fidèles augmentait sans cesse. Un ancien officier romain du nom de Martin (Saint Martin) parcourait les campagnes pour évangéliser une grande partie de la Gaule.</p>
-        </section>
+                    <div class="question">
+                        <h3>Question 2 : Quel vêtement les Gaulois ont-ils adopté des Romains ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', true)">La toge</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">La tunique</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Le pantalon</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">La cape</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ La toge était le vêtement typique des Romains, un grand manteau de drap blanc relevé sur l'épaule.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : Comment s'appelaient les grandes propriétés des riches Gallo-romains ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">Les domus</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Les fermes</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">Les villas</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Les oppidums</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ Les villas étaient de grandes propriétés luxueuses avec de nombreux bâtiments annexes.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : Quel empereur a fait du christianisme la religion officielle ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">César</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Auguste</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">Constantin</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Néron</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ Constantin a officialisé le christianisme au début du 4ème siècle.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Que sont devenus les temples des anciens dieux ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Des marchés</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Des églises chrétiennes</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Des thermes</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Des palais</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Les temples des anciens dieux ont été soit détruits, soit transformés en églises chrétiennes.
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes des Gallo-Romains</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-50</div>
+                            <div class="timeline-content">
+                                <h4>Début de la Pax Romana</h4>
+                                <p>Après la défaite de Vercingétorix, les Romains établissent une paix durable en Gaule.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">212</div>
+                            <div class="timeline-content">
+                                <h4>Édit de Caracalla</h4>
+                                <p>Tous les habitants libres de l'Empire, dont les Gaulois, deviennent citoyens romains.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">313</div>
+                            <div class="timeline-content">
+                                <h4>Édit de Milan</h4>
+                                <p>Constantin fait du christianisme la religion officielle de l'Empire romain.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">476</div>
+                            <div class="timeline-content">
+                                <h4>Fin de l'Empire romain d'Occident</h4>
+                                <p>Chute de Rome et fin de la domination romaine en Gaule.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
+    <!-- Charger le JavaScript -->
     <script src="scripts/main.js"></script>
 </body>
 </html> 

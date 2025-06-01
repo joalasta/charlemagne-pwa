@@ -5,43 +5,47 @@
     left: 0;
     right: 0;
     background: white;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px 24px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
     z-index: 1000;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-}
-
-.nav-back {
-    display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1em;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    background-color: #4661e6;
-    margin-right: 20px;
-}
-
-.nav-back:hover {
-    background-color: #3651d6;
 }
 
 .nav-center {
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 4px;
+    margin: 0 20px;
 }
 
 .nav-title {
-    margin: 0;
-    font-size: 1.2rem;
     color: #2d3748;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+}
+
+.nav-back {
+    color: #4661e6;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.nav-reset {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #4661e6;
+}
+
+/* Ajustements pour le contenu principal */
+.main-content {
+    padding-top: 60px; /* Pour compenser la navigation fixe */
 }
 
 .score-live {
@@ -54,19 +58,6 @@
     color: #2ecc71;
     font-weight: 400;
     box-shadow: none;
-}
-
-.nav-reset {
-    display: none; /* Masqué par défaut */
-    background: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 1em;
-    font-weight: 400;
-    cursor: pointer;
-    transition: background 0.3s;
 }
 
 /* Ces éléments ne seront visibles que sur la page quiz */
