@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clovis et les Mérovingiens - Application d'apprentissage</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Apprends l'histoire de Clovis et des Mérovingiens de manière interactive !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Clovis App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="charlemagne.css">
+</head>
+<body>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <h2 class="nav-title"></h2>
+    </nav>
+
+    <div class="container">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <span style="font-size: 4rem;">⚔️</span>
+                </div>
+                <h1>Clovis et les Mérovingiens</h1>
+                <p class="subtitle">Découvre le premier roi des Francs !</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>H7 - Clovis et les Mérovingiens</h2>
+                    
+                    <h3>1. Les Francs en Gaule</h3>
+                    <p>
+                        Bien avant les Normands, à l'époque des migrations <span class="highlight">"barbares"</span>, un peuple se déplace progressivement vers le contrôle de la Gaule et les <span class="highlight">Francs</span>.
+                    </p>
+                    
+                    <p>
+                        Les <span class="highlight">"barbares"</span>, peuples du <span class="date-important">IVe au Ve siècle</span>, s'installent peu à peu dans l'empire romain. Ils fondent plusieurs royaumes. Le territoire se trouve partagé entre les <span class="highlight">Gallo-Romains</span>, les <span class="highlight">Francs</span>, les <span class="highlight">Wisigoths</span> et les <span class="highlight">Burgondes</span>. En <span class="date-important">481</span>, à la tête d'une tribu de Francs, <span class="highlight">Clovis</span> unit tous les Francs sous son commandement et devient leur roi. Petit-fils de <span class="date-important">Mérovée</span>, il n'a que <span class="highlight">15 ans</span> lorsqu'il hérite du royaume franc en <span class="date-important">481</span> à la mort de son père, et crée ainsi le <span class="highlight">royaume franc</span> qui s'étendait sur le nord de la Gaule.
+                    </p>
+                    
+                    <h3>2. Le royaume des Francs se situe au nord de la Gaule et en Belgique</h3>
+                    <p>
+                        Les <span class="highlight">Wisigoths</span>, les <span class="highlight">Burgondes</span>, les <span class="highlight">Ostrogoths</span> et le royaume de <span class="highlight">Syagrius</span> (un romain) se font la guerre pour s'agrandir et s'emparer de nouveaux territoires. Ils continuent à s'entretuer, laissant leur royaume à des princes trop jeunes pour gouverner.
+                    </p>
+                    
+                    <p>
+                        C'est <span class="highlight">la période des rois fainéants</span> qui laissent leur pouvoir aux chefs de leurs cours, les <span class="highlight">maires du palais</span>.
+                    </p>
+                    
+                    <h3>3. Clovis, le premier roi catholique</h3>
+                    <p>
+                        Sous le règne de Clovis, les Francs se limitent à la conquête de nouveaux territoires. Ils conquièrent le royaume gallo-romain à l'ouest, puis le royaume des <span class="highlight">Wisigoths</span> au sud. Ils attaquèrent également les petits royaumes du Burgondes à l'est.
+                    </p>
+                    
+                    <p>
+                        Il épouse une catholique, <span class="highlight">Clotilde</span>, et sur ses conseils, se fait baptiser à <span class="highlight">Reims</span> en <span class="date-important">498</span> par l'évêque <span class="highlight">Rémi</span>. Il devient le premier roi catholique de l'Occident. Il s'étend sur le soutien des évêques et de la majorité du peuple gaulois qui est <span class="highlight">chrétien</span>, ce qui lui permet d'étendre son royaume et de faire sa capitale à <span class="highlight">Paris</span>.
+                    </p>
+                    
+                    <h3>4. L'héritage de Clovis et les Mérovingiens</h3>
+                    <p>
+                        Un royaume s'impose dirigé par un roi : <span class="highlight">Premier roi de France</span>, Clovis meurt en <span class="date-important">511</span>. Les successeurs de Clovis forment la <span class="highlight">dynastie des rois mérovingiens</span>.
+                    </p>
+                    
+                    <p>
+                        Ses quatre fils se partagent son royaume, mais ils ne font la guerre pour étendre leurs territoires. Ils continuent à s'entretuer, laissant leur royaume à des princes trop jeunes pour gouverner. C'est la période des <span class="highlight">rois fainéants</span> qui laissent leur pouvoir aux chefs de leurs cours, les <span class="highlight">maires du palais</span>.
+                    </p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>481</strong> : Clovis devient roi des Francs à 15 ans</li>
+                        <li><strong>498</strong> : Baptême de Clovis à Reims par l'évêque Rémi</li>
+                        <li><strong>511</strong> : Mort de Clovis - partage du royaume entre ses fils</li>
+                        <li><strong>Paris</strong> : Capitale du royaume de Clovis</li>
+                        <li><strong>Clotilde</strong> : Épouse catholique de Clovis</li>
+                        <li><strong>Mérovingiens</strong> : Dynastie fondée par Mérovée</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="score-live" id="liveScore">Score: 0/12</div>
+                
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur Clovis !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : En quelle année Clovis devient-il roi des Francs ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', true)">481</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">498</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">511</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">496</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ Clovis devient roi des Francs en 481, à seulement 15 ans, après la mort de son père. Il était très jeune pour diriger un royaume !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2 : Quel âge avait Clovis quand il est devenu roi ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">12 ans</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">15 ans</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">18 ans</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">20 ans</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ Clovis n'avait que 15 ans quand il a hérité du royaume franc. C'était très jeune pour être roi, mais il s'est montré très habile !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : Comment s'appelait l'épouse de Clovis ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">Clothilde</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">Clotilde</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Chrétienne</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Clémence</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ Clotilde était l'épouse catholique de Clovis. Elle l'a influencé pour qu'il se convertisse au christianisme, ce qui a été très important pour son règne.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : En quelle année Clovis s'est-il fait baptiser ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">481</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">496</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">498</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">511</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ Clovis se fait baptiser en 498 à Reims par l'évêque Rémi. Ce baptême fait de lui le premier roi catholique d'Occident !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Dans quelle ville Clovis a-t-il été baptisé ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Paris</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Reims</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Soissons</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Tours</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Clovis a été baptisé à Reims par l'évêque Rémi. Reims restera longtemps la ville du sacre des rois de France !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6 : Qui a baptisé Clovis ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q6', false)">L'évêque Martin</label>
+                            <label onclick="checkAnswer(this, 'q6', true)">L'évêque Rémi</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Le pape</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">L'évêque Germain</label>
+                        </div>
+                        <div class="explanation" id="exp-q6">
+                            ✨ L'évêque Rémi a baptisé Clovis à Reims. Ce baptême était très important car il donnait une légitimité religieuse au pouvoir de Clovis.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7 : Quelle était la capitale du royaume de Clovis ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q7', false)">Reims</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Soissons</label>
+                            <label onclick="checkAnswer(this, 'q7', true)">Paris</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Tournai</label>
+                        </div>
+                        <div class="explanation" id="exp-q7">
+                            ✨ Clovis fait de Paris sa capitale. C'est grâce à lui que Paris devient une ville importante qui le restera jusqu'à aujourd'hui !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8 : En quelle année Clovis est-il mort ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q8', false)">508</label>
+                            <label onclick="checkAnswer(this, 'q8', true)">511</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">515</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">520</label>
+                        </div>
+                        <div class="explanation" id="exp-q8">
+                            ✨ Clovis meurt en 511. Ses quatre fils se partagent alors son royaume, ce qui créera des divisions dans le royaume franc.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9 : Quel nom donne-t-on à la dynastie fondée par Mérovée ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q9', false)">Les Carolingiens</label>
+                            <label onclick="checkAnswer(this, 'q9', true)">Les Mérovingiens</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Les Capétiens</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Les Francs</label>
+                        </div>
+                        <div class="explanation" id="exp-q9">
+                            ✨ Les Mérovingiens tirent leur nom de Mérovée, le grand-père de Clovis. Cette dynastie a régné sur les Francs pendant environ 250 ans.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10 : Quels peuples se partageaient la Gaule avec les Francs ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q10', false)">Les Celtes et les Romains</label>
+                            <label onclick="checkAnswer(this, 'q10', true)">Les Wisigoths et les Burgondes</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Les Saxons et les Angles</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Les Vandales et les Huns</label>
+                        </div>
+                        <div class="explanation" id="exp-q10">
+                            ✨ Les Wisigoths, les Burgondes et les Gallo-Romains se partageaient la Gaule avec les Francs. Clovis a réussi à conquérir une partie de leurs territoires.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 11 : Comment appelle-t-on les rois mérovingiens qui ont perdu leur pouvoir ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q11', false)">Les rois paresseux</label>
+                            <label onclick="checkAnswer(this, 'q11', true)">Les rois fainéants</label>
+                            <label onclick="checkAnswer(this, 'q11', false)">Les rois faibles</label>
+                            <label onclick="checkAnswer(this, 'q11', false)">Les rois endormis</label>
+                        </div>
+                        <div class="explanation" id="exp-q11">
+                            ✨ On appelait "rois fainéants" les rois mérovingiens qui avaient perdu leur pouvoir au profit des maires du palais. Ils ne gouvernaient plus vraiment !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 12 : Qui dirigeait réellement pendant la période des rois fainéants ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q12', false)">Les évêques</label>
+                            <label onclick="checkAnswer(this, 'q12', false)">Les comtes</label>
+                            <label onclick="checkAnswer(this, 'q12', true)">Les maires du palais</label>
+                            <label onclick="checkAnswer(this, 'q12', false)">Les reines</label>
+                        </div>
+                        <div class="explanation" id="exp-q12">
+                            ✨ Les maires du palais dirigeaient réellement le royaume pendant que les rois fainéants ne gouvernaient plus. Charles Martel était l'un de ces maires du palais !
+                        </div>
+                    </div>
+                    
+                    <button class="reset-quiz" onclick="resetQuiz()">🔄 Réinitialiser le quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes de Clovis et des Mérovingiens</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">481</div>
+                            <div class="timeline-content">
+                                <h4>Clovis devient roi des Francs</h4>
+                                <p>À seulement 15 ans, Clovis hérite du royaume franc à la mort de son père et unit les tribus franques sous son commandement.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">486</div>
+                            <div class="timeline-content">
+                                <h4>Victoire de Soissons</h4>
+                                <p>Clovis bat Syagrius, le dernier représentant romain en Gaule, et s'empare de son royaume.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">493</div>
+                            <div class="timeline-content">
+                                <h4>Mariage avec Clotilde</h4>
+                                <p>Clovis épouse Clotilde, une princesse burgonde catholique, ce qui l'influence vers la conversion au christianisme.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">498</div>
+                            <div class="timeline-content">
+                                <h4>Baptême de Clovis à Reims</h4>
+                                <p>L'évêque Rémi baptise Clovis à Reims. Il devient le premier roi catholique d'Occident et gagne le soutien du clergé.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">507</div>
+                            <div class="timeline-content">
+                                <h4>Victoire de Vouillé</h4>
+                                <p>Clovis bat les Wisigoths et conquiert une grande partie de leurs territoires. Il étend son royaume vers le sud.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">508</div>
+                            <div class="timeline-content">
+                                <h4>Paris devient capitale</h4>
+                                <p>Clovis fait de Paris la capitale de son royaume, donnant à cette ville une importance qu'elle conserve encore aujourd'hui.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">511</div>
+                            <div class="timeline-content">
+                                <h4>Mort de Clovis</h4>
+                                <p>Clovis meurt à Paris. Ses quatre fils se partagent son royaume selon la tradition franque, créant des divisions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">VIIe</div>
+                            <div class="timeline-content">
+                                <h4>Période des rois fainéants</h4>
+                                <p>Les rois mérovingiens perdent progressivement leur pouvoir au profit des maires du palais, dont Charles Martel.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charger le JavaScript -->
+    <script src="charlemagne.js"></script>
+</body>
+</html>
