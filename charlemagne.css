@@ -178,9 +178,9 @@ body {
 
 /* Contenu des pages */
 .content-wrapper {
-    margin-top: 80px;
-    padding: 20px;
-    background: white;
+    margin-top: 20px;
+    padding: 0px;
+    background: rgb(255, 255, 255);
     min-height: calc(100vh - 80px);
 }
 
@@ -237,7 +237,7 @@ body {
 .quiz-container {
     background: transparent;
     border-radius: 0;
-    padding: 20px;
+    padding: 0px;
     box-shadow: none;
 }
 
@@ -246,7 +246,7 @@ body {
     margin: 0;
     font-size: 1.8em;
     border-bottom: 1px solid #edf2f7;
-    padding: 20px;
+    padding: 10px;
     background: #f9f9f9;
     font-weight: 600;
 }
