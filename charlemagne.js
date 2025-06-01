@@ -18,7 +18,7 @@ function showPage(pageId) {
 // Mise à jour de la navigation
 function updateNavigation(pageId) {
     const navBack = document.querySelector('.nav-back');
-    const titleElement = document.querySelector('.nav-title');
+    const titleElement = document.querySelector('#page-title');
     
     if (pageId === 'home') {
         // Sur la page d'accueil du chapitre
