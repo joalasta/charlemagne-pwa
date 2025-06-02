@@ -17,6 +17,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 40px;
     padding: 16px;
 }
 
@@ -73,7 +74,7 @@ body {
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -118,7 +119,7 @@ body {
 
 .card-content .period {
     display: inline-block;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 76, 255, 0.1);
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 0.85rem;
@@ -481,13 +482,13 @@ body.quiz-page .score-live {
 .timeline-container {
     background: transparent;
     border-radius: 0;
-    padding: 20px;
+    padding: 0px;
     box-shadow: none;
 }
 
 .timeline-container h2 {
     color: #2d3748;
-    margin: 0;
+    margin-bottom: 20px;
     font-size: 1.8em;
     border-bottom: 1px solid #edf2f7;
     padding: 20px;
