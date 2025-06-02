@@ -121,4 +121,4 @@ Après la création de la leçon, il faudra ajouter :
 │   └── [nom]-icon.png    # Icône
 ├── index.html            # Page d'accueil mise à jour
 └── lesson-template.html  # Template de base
-``` 
+``` o

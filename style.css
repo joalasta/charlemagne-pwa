@@ -500,71 +500,78 @@ body.quiz-page .score-live {
     padding: 30px 20px;
 }
 
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 70px;
+    height: calc(100% - 140px);
+    width: 2px;
+    background-color: #2463EB;
+}
+
 .timeline-item {
-    margin-bottom: 30px;
     position: relative;
-    padding-left: 50px;
+    padding-left: 80px;
+    margin-bottom: 40px;
     cursor: pointer;
 }
 
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: -30px;
-    width: 2px;
-    background: #9c27b0;
-}
-
-.timeline-item:last-child::before {
-    display: none;
+.timeline-item:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-date {
     position: absolute;
-    left: 0;
-    top: 0;
-    background: #9c27b0;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 90px;
+    padding: 8px 12px;
+    background-color: #2463EB;
     color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.8em;
-    transition: transform 0.3s ease;
+    font-size: 14px;
+    z-index: 1;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .timeline-item:hover .timeline-date {
-    transform: scale(1.2);
+    background-color: #1d4ed8;
+    transform: translateY(-50%) scale(1.05);
+    transition: all 0.3s ease;
 }
 
 .timeline-content {
-    background: #f9f9fa;
+    background: white;
     padding: 20px;
-    border-radius: 12px;
-    border-left: 3px solid #4661e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-left: 20px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 4px solid #2463EB;
 }
 
 .timeline-item:hover .timeline-content {
-    background: #f7e6ff;
+    background: #f8f9ff;
     transform: translateX(5px);
 }
 
 .timeline-content h4 {
-    color: #4661e6;
+    color: #2463EB;
     margin-bottom: 5px;
     font-weight: 600;
+    font-size: 1.1em;
 }
 
 .timeline-content p {
-    color: #666;
+    color: #4a5568;
     font-size: 0.95em;
     margin: 0;
     display: none;
@@ -573,15 +580,23 @@ body.quiz-page .score-live {
 .timeline-item.active .timeline-content p {
     display: block;
     margin-top: 10px;
+    animation: fadeIn 0.3s ease;
 }
 
 .timeline-hint {
     text-align: center;
-    color: #4661e6;
-    margin-bottom: 20px;
+    color: #2463EB;
+    margin-bottom: 30px;
     font-style: italic;
-    padding: 0 15px;
+    padding: 10px 15px;
+    background: #f0f5ff;
+    border-radius: 8px;
     font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .period {
