@@ -86,6 +86,15 @@ const hardModeAnswers = {
     'q11': ['987']
 };
 
+// Fonction pour mélanger un tableau
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 // Basculer entre mode normal et difficile
 function toggleHardMode() {
     isHardMode = document.getElementById('hardMode').checked;
@@ -183,7 +192,9 @@ function restoreNormalMode(questionId, optionsDiv) {
     };
     
     const options = qcmOptions[questionId];
-    optionsDiv.innerHTML = options.map(option => 
+    // Mélanger les options avant de les afficher
+    const shuffledOptions = shuffleArray([...options]);
+    optionsDiv.innerHTML = shuffledOptions.map(option => 
         `<label onclick="checkAnswer(this, '${questionId}', ${option.correct})">${option.text}</label>`
     ).join('');
 }
@@ -252,22 +263,8 @@ function checkAnswer(label, questionId, isCorrect) {
     } else {
         label.classList.add('incorrect');
         // Montrer la bonne réponse
-        labels.forEach((l, index) => {
-            const correctAnswers = {
-                'q1': 1,  // 732
-                'q2': 1,  // Pépin le Bref
-                'q3': 2,  // Aix-la-Chapelle
-                'q4': 1,  // 800
-                'q5': 1,  // missi dominici
-                'q6': 2,  // Verdun
-                'q7': 2,  // Pépin le Bref
-                'q8': 1,  // Louis le Pieux
-                'q9': 1,  // écoles
-                'q10': 1, // comtes
-                'q11': 2  // 987
-            };
-            
-            if (index === correctAnswers[questionId]) {
+        labels.forEach(l => {
+            if (l.getAttribute('onclick').includes('true')) {
                 l.classList.add('correct');
             }
         });
