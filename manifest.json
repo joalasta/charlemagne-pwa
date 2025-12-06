@@ -1,7 +1,7 @@
 {
-  "name": "Charlemagne et les Carolingiens",
-  "short_name": "Charlemagne App",
-  "description": "Apprends l'histoire de Charlemagne et des Carolingiens de manière interactive !",
+  "name": "Apprendre en s'amusant",
+  "short_name": "Apprendre",
+  "description": "Apprends l'histoire, les sciences et bien plus encore de manière interactive !",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#DBE9FE",

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Apprendre en s'amusant</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#9B1B28">
+    <meta name="description" content="Découvre l'histoire de manière interactive !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Histoire">
+    
+    <!-- Charger le CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Enregistrer le Service Worker pour les mises à jour automatiques -->
+    <script src="sw-register.js"></script>
+    <div class="container">
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div style="margin-bottom: 20px;">
+                    <a href="index.html" style="color: #4661e6; text-decoration: none; font-weight: 600; font-size: 1.1em;">← Retour aux catégories</a>
+                </div>
+                <h1>📚 Histoire</h1>
+                <p class="subtitle">Découvre et apprends l'histoire de manière ludique !</p>
+                
+                <div class="menu-grid">
+                    <a href="chapitre-gaulois.html" class="chapter-card">
+                        <div class="card-content">
+                            <img src="images/gaulois-icon.png" alt="Gaulois" class="icon-img">
+                            <h2>Les Celtes</br>et les Gaulois</h2>
+                            <p>Découvre la vie des premiers habitants de la France.</p>
+                            <span class="period">-1200 à -50</span>
+                        </div>
+                    </a>
+
+                    <a href="chapitre-romains.html" class="chapter-card">
+                        <div class="card-content">
+                            <img src="images/romains-icon.png" alt="Romains" class="icon-img">
+                            <h2>Les Romains et la guerre des Gaules</h2>
+                            <p>La conquête de la Gaule par Jules César.</p>
+                            <span class="period">-58 à -46</span>
+                        </div>
+                    </a>
+
+                    <a href="chapitre-gallo-romains-christianisme.html" class="chapter-card">
+                        <div class="card-content">
+                            <img src="images/gallo-romains-icon.png" alt="Gallo-Romains" class="icon-img">
+                            <h2>Les Gallo-Romains et le Christianisme</h2>
+                            <p>De la romanisation à la christianisation : la transformation de la Gaule</p>
+                            <span class="period">-46 à 476</span>
+                        </div>
+                    </a>
+                    
+                    <a href="chapitre-clovis.html" class="chapter-card">
+                        <div class="card-content">
+                            <img src="images/clovis-icon.png" alt="Clovis" class="icon-img">
+                            <h2>Clovis</br>et les Mérovingiens</h2>
+                            <p>Découvre le premier roi des Francs</p>
+                            <span class="period">481 à 751</span>
+                        </div>
+                    </a>
+
+                    <a href="chapitre-charlemagne.html" class="chapter-card">
+                        <div class="card-content">
+                            <img src="images/charlemagne-icon.png" alt="Charlemagne" class="icon-img">
+                            <h2>Charlemagne</br>et les Carolingiens</h2>
+                            <p>Découvre l'empire carolingien et son fondateur</p>
+                            <span class="period">751 à 987</span>
+                        </div>
+                    </a>
+
+                    <a href="chapitre-lumières-monarchie-absolue.html" class="chapter-card">
+                        <div class="card-content">
+                            <img src="images/lumières-monarchie-absolue-icon.png" alt="Les Lumières" class="icon-img">
+                            <h2>Les Lumières et la critique de la monarchie absolue</h2>
+                            <p>De la critique des philosophes à la Révolution française</p>
+                            <span class="period">1789</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

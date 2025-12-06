@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sciences - Apprendre en s'amusant</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#9B1B28">
+    <meta name="description" content="Explore les sciences de manière interactive !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sciences">
+    
+    <!-- Charger le CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Enregistrer le Service Worker pour les mises à jour automatiques -->
+    <script src="sw-register.js"></script>
+    <div class="container">
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div style="margin-bottom: 20px;">
+                    <a href="index.html" style="color: #4661e6; text-decoration: none; font-weight: 600; font-size: 1.1em;">← Retour aux catégories</a>
+                </div>
+                <h1>🔬 Sciences</h1>
+                <p class="subtitle">Explore les sciences de manière ludique !</p>
+                
+                <div class="menu-grid">
+                    <div class="chapter-card" style="opacity: 0.6; cursor: default;">
+                        <div class="card-content">
+                            <div class="category-icon" style="font-size: 3em; margin-bottom: 20px;">🚧</div>
+                            <h2>Bientôt disponible</h2>
+                            <p>Les leçons de sciences arrivent prochainement !</p>
+                            <span class="period">En préparation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

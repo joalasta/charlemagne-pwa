@@ -610,3 +610,37 @@ body.quiz-page .score-live {
     color: #666;
 }
 
+/* Styles pour les cartes de catégories */
+.category-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.category-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+}
+
+.category-card .card-content h2 {
+    color: white;
+    font-size: 1.5em;
+    margin: 20px 0 10px 0;
+}
+
+.category-card .card-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1em;
+}
+
+.category-card .period {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.category-icon {
+    font-size: 4em;
+    margin-bottom: 15px;
+    display: block;
+}
+
