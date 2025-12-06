@@ -1,4 +1,4 @@
-const CACHE_NAME = 'charlemagne-app-v1';
+const CACHE_NAME = 'charlemagne-app-v2';
 const urlsToCache = [
   './',
   './index.html',
@@ -13,16 +13,45 @@ self.addEventListener('install', function(event) {
         return cache.addAll(urlsToCache);
       })
   );
+  // Force l'activation immédiate du nouveau service worker
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheName !== CACHE_NAME) {
+            // Supprime les anciens caches
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+  // Prend le contrôle de toutes les pages immédiatement
+  return self.clients.claim();
 });
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+        // Toujours essayer de récupérer depuis le réseau en premier
+        return fetch(event.request).then(function(fetchResponse) {
+          // Mettre à jour le cache avec la nouvelle version
+          const responseToCache = fetchResponse.clone();
+          caches.open(CACHE_NAME).then(function(cache) {
+            cache.put(event.request, responseToCache);
+          });
+          return fetchResponse;
+        }).catch(function() {
+          // Si le réseau échoue, utiliser le cache
+          if (response) {
+            return response;
+          }
+        });
       }
     )
   );
