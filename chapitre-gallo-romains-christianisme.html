@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Gallo-Romains et le Christianisme - Histoire CM1</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Découvre la transformation de la Gaule : de la romanisation à la christianisation">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Gallo-Romains App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/10</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/gallo-romains-icon.png" alt="Gallo-Romains" class="charlemagne-image">
+                </div>
+                <h1>Les Gallo-Romains et le Christianisme</h1>
+                <p class="subtitle">De la romanisation à la christianisation : la transformation de la Gaule</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>H6 - Les Gallo-Romains et le Christianisme</h2>
+                    
+                    <h3>1. Les Gallo-Romains</h3>
+                    <p>
+                        Après la soumission de Vercingétorix, il y eut bien quelques révoltes mais les Romains les punirent cruellement et établirent la paix dans toute la Gaule. Cette <span class="highlight">paix romaine</span> (Pax Romana) dura près de <span class="date-important">500 ans</span>.
+                    </p>
+                    
+                    <h3>2. Les citoyens romains</h3>
+                    <p>
+                        Les Gaulois, peu à peu, cherchèrent à imiter la culture romaine. Ils se mirent à porter un <span class="highlight">grand manteau de drap blanc relevé sur l'épaule</span> : la toge. Ils apprirent à parler le <span class="highlight">latin</span> qui était la langue des Romains. Beaucoup de Gaulois s'engagèrent dans la légion romaine. D'autres devenaient fonctionnaires, magistrats, sénateurs. Un jour, tous les Gaulois furent déclarés <span class="highlight">citoyens romains</span>.
+                    </p>
+                    
+                    <h3>3. La villa gallo-romaine</h3>
+                    <p>
+                        Les campagnes gauloises furent moins touchées par la romanisation. Elles conservèrent longtemps leurs coutumes celtiques et leur mode de vie traditionnel. De riches Gallo-romains y firent construire de belles propriétés nommées <span class="highlight">villas</span>...
+                    </p>
+                    
+                    <h3>4. La christianisation</h3>
+                    <p>
+                        L'ancienne religion des druides avait rapidement disparu. Les Gallo-Romains adorèrent alors les dieux romains : <span class="highlight">Jupiter, Mars, Neptune</span> et surtout durent pratiquer le culte de l'empereur de Rome. Au <span class="date-important">3e siècle</span> apparut en Gaule la religion du Christ ou christianisme...
+                    </p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>Pax Romana</strong> : Paix romaine d'environ 500 ans en Gaule</li>
+                        <li><strong>Romanisation</strong> : Adoption progressive de la culture romaine</li>
+                        <li><strong>3e siècle</strong> : Apparition du christianisme en Gaule</li>
+                        <li><strong>4e siècle</strong> : Constantin et religion officielle de l'Empire</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur les Gallo-Romains !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Exemples de questions (adapter/compléter) -->
+                    <div class="question">
+                        <h3>Question 1 : Combien de temps a duré la Pax Romana en Gaule ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', false)">100 ans</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">300 ans</label>
+                            <label onclick="checkAnswer(this, 'q1', true)">500 ans</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">700 ans</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">✨ La Pax Romana a duré environ 500 ans.</div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2 : Quel vêtement ont adopté les Gaulois ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">La tunique</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">La toge</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Le pantalon</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">La cape</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">✨ La toge est typique des Romains.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes des Gallo-Romains</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">-46</div>
+                            <div class="timeline-content">
+                                <h4>Début de la paix romaine</h4>
+                                <p>La Pax Romana s'installe en Gaule.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">3e siècle</div>
+                            <div class="timeline-content">
+                                <h4>Apparition du christianisme</h4>
+                                <p>La nouvelle religion se répand en Gaule.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">Fin du 4e siècle</div>
+                            <div class="timeline-content">
+                                <h4>Constantin et la religion officielle</h4>
+                                <p>Le christianisme devient religion officielle de l'Empire romain.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">476</div>
+                            <div class="timeline-content">
+                                <h4>Chute de l'Empire romain d'Occident</h4>
+                                <p>Fin de la période gallo-romaine.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Charger le JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Lumières et la critique de la monarchie absolue - Histoire CM1</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Découvre comment les Lumières ont critiqué la monarchie absolue et mené à la Révolution française !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Lumières App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-back">← Accueil</a>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/10</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/lumières-monarchie-absolue-icon.png" alt="Les Lumières" class="charlemagne-image">
+                </div>
+                <h1>Les Lumières et la critique de la monarchie absolue</h1>
+                <p class="subtitle">De la critique des philosophes à la Révolution française</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('timeline')">
+                        <div class="icon">
+                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
+                        </div>
+                        <h3>Chronologie</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>Les Lumières et la critique de la monarchie absolue</h2>
+                    
+                    <h3>1. Les Lumières et la critique de la monarchie absolue</h3>
+                    <p>
+                        Pendant le règne de <span class="highlight">Louis XVI</span>, un nouveau courant de pensée fait son apparition : les <span class="highlight">philosophes des Lumières</span>. Ces penseurs remettent en cause la <span class="highlight">monarchie absolue de droit divin</span>. Ils critiquent les <span class="highlight">privilèges</span> et toute la puissance du roi. Ils défendent les idées de <span class="highlight">liberté</span> et de <span class="highlight">justice</span>.
+                    </p>
+                    <p>
+                        Les philosophes réfléchissent sur le sens de la vie et l'organisation de la société. Ils créent l'<span class="highlight">Encyclopédie</span>, un ouvrage de référence visant à expliquer et rendre accessible au public les connaissances dans de multiples domaines.
+                    </p>
+                    
+                    <h3>2. Les crises que Louis XVI doit affronter</h3>
+                    <p>
+                        À la veille de la Révolution, sous <span class="highlight">Louis XVI</span>, le pays traverse des <span class="highlight">crises financières très graves</span>. Le coût des guerres pèse sur les finances de l'État. Les impôts sont de plus en plus lourds et le peuple peine à payer.
+                    </p>
+                    <p>
+                        De plus, les récentes récoltes ont été catastrophiques à cause d'un <span class="date-important">hiver 1788-1789</span> rigoureux. Le prix du pain augmente et la <span class="highlight">famine</span> se répand dans tout le royaume.
+                    </p>
+                    <p>
+                        Depuis le <span class="highlight">Moyen Âge</span>, la société française est divisée en <span class="highlight">trois ordres</span> qui n'ont pas les mêmes droits. La <span class="highlight">noblesse</span> et le <span class="highlight">clergé</span> ont des privilèges tandis que le <span class="highlight">Tiers-État</span> doit payer des impôts. Les conditions de vie deviennent de plus en plus difficiles. Des mécontentements apparaissent, alimentés par les idées des Lumières qui souhaitaient plus de justice.
+                    </p>
+                    
+                    <h3>3. La convocation des États généraux</h3>
+                    <p>
+                        Face à ce mécontentement, le <span class="date-important">5 mai 1789</span>, <span class="highlight">Louis XVI</span> décide de convoquer les <span class="highlight">États généraux</span>, une assemblée convoquée par le roi pour résoudre les difficultés du royaume. Des représentants de chaque ordre sont élus pour y participer.
+                    </p>
+                    <p>
+                        Des <span class="highlight">cahiers de doléances</span> sont rédigés dans lesquels le peuple peut exprimer ses problèmes et ses revendications. Par exemple, les artisans de Pont-l'Abbé demandent que chacun soit libre, plus de liberté.
+                    </p>
+                    <p>
+                        Dès le début, des questions vont se poser : les députés du <span class="highlight">Tiers-État</span> veulent un <span class="highlight">vote par personne</span> alors que ceux du clergé et de la noblesse veulent un <span class="highlight">vote par ordre</span>. Après 6 semaines de discussions, le roi tranche en faveur des privilégiés.
+                    </p>
+                    
+                    <h3>4. Le serment du jeu de paume et la fin de la monarchie absolue</h3>
+                    <p>
+                        Le <span class="date-important">17 juin 1789</span>, en signe de protestation, les députés du Tiers-État se proclament <span class="highlight">Assemblée nationale</span>.
+                    </p>
+                    <p>
+                        Se sentant menacé, le roi essaie de les faire expulser. Le <span class="date-important">20 juin 1789</span>, les députés du Tiers-État, rejoints par quelques membres du clergé et de la noblesse, se réunissent dans la salle du <span class="highlight">Jeu de Paume</span> à Versailles. Ils font le <span class="highlight">serment</span> de ne pas se séparer avant d'avoir donné une <span class="highlight">Constitution</span> à la France.
+                    </p>
+                    <p>
+                        Le <span class="date-important">9 juillet 1789</span>, ils se déclarent <span class="highlight">Assemblée nationale constituante</span>, ce qui donne le pouvoir à la Nation. C'est la fin de la <span class="highlight">monarchie absolue</span>.
+                    </p>
+                    
+                    <h3>5. La prise de la Bastille et l'abolition des privilèges</h3>
+                    <p>
+                        En juillet <span class="date-important">1789</span>, le roi <span class="highlight">Louis XVI</span> renvoie son ministre des finances Necker et ordonne à ses soldats d'entourer Paris. Le <span class="date-important">14 juillet 1789</span>, une foule de Parisiens marche vers la prison de la <span class="highlight">Bastille</span>. Après des heures de lutte, la Bastille est prise.
+                    </p>
+                    <p>
+                        Pendant l'été, la révolte se propage dans les campagnes : c'est la <span class="highlight">Grande Peur</span>. Les paysans attaquent les châteaux des seigneurs.
+                    </p>
+                    <p>
+                        Le <span class="date-important">4 août 1789</span>, les députés, y compris certains membres du Clergé et de la noblesse, votent l'<span class="highlight">abolition des privilèges</span>.
+                    </p>
+                    
+                    <h3>6. La Déclaration des droits de l'homme et du citoyen</h3>
+                    <p>
+                        Le <span class="date-important">26 août 1789</span>, les députés rédigent la <span class="highlight">Déclaration des droits de l'homme et du citoyen</span>. Dans ce texte inspiré des Lumières, les grands principes révolutionnaires sont proclamés : tous les citoyens ont droit à la <span class="highlight">liberté</span>, à la <span class="highlight">justice</span>, et le droit de pratiquer la <span class="highlight">religion de leur choix</span>.
+                    </p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>Les Lumières</strong> : Philosophes qui critiquent la monarchie absolue et défendent la liberté et la justice</li>
+                        <li><strong>1788-1789</strong> : Hiver rigoureux, mauvaises récoltes et famine</li>
+                        <li><strong>5 mai 1789</strong> : Convocation des États généraux par Louis XVI</li>
+                        <li><strong>17 juin 1789</strong> : Les députés du Tiers-État se proclament Assemblée nationale</li>
+                        <li><strong>20 juin 1789</strong> : Serment du jeu de paume</li>
+                        <li><strong>9 juillet 1789</strong> : Proclamation de l'Assemblée nationale constituante - fin de la monarchie absolue</li>
+                        <li><strong>14 juillet 1789</strong> : Prise de la Bastille</li>
+                        <li><strong>4 août 1789</strong> : Abolition des privilèges</li>
+                        <li><strong>26 août 1789</strong> : Déclaration des droits de l'homme et du citoyen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur les Lumières et la Révolution !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : Que critiquent les philosophes des Lumières ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', true)">La monarchie absolue de droit divin et les privilèges</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">Seulement les impôts</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">Seulement la noblesse</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">Les paysans</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ Les philosophes des Lumières critiquent la monarchie absolue de droit divin, les privilèges et défendent les idées de liberté et de justice.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2 : Pourquoi y a-t-il une famine en 1789 ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">Parce que les paysans ne travaillaient pas</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">À cause d'un hiver rigoureux et de mauvaises récoltes</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Parce que le roi a interdit l'agriculture</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Parce qu'il n'y avait plus de terres</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ L'hiver 1788-1789 a été rigoureux et les récoltes ont été catastrophiques, ce qui a provoqué une hausse du prix du pain et la famine.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : En combien d'ordres la société française était-elle divisée ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">2 ordres</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">3 ordres</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">4 ordres</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">5 ordres</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ La société française était divisée en 3 ordres : le clergé, la noblesse et le Tiers-État.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : Quand Louis XVI convoque-t-il les États généraux ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', false)">Le 20 juin 1789</label>
+                            <label onclick="checkAnswer(this, 'q4', true)">Le 5 mai 1789</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Le 14 juillet 1789</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">Le 4 août 1789</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ Louis XVI convoque les États généraux le 5 mai 1789 pour résoudre les difficultés du royaume.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Que sont les cahiers de doléances ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Des livres d'histoire</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Des documents où le peuple exprime ses revendications</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Des lois du roi</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Des comptes de l'État</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Les cahiers de doléances sont des documents rédigés avant la réunion des États généraux dans lesquels le peuple exprime ses problèmes et ses revendications.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6 : Que demandent les députés du Tiers-État lors des États généraux ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q6', false)">Un vote par ordre</label>
+                            <label onclick="checkAnswer(this, 'q6', true)">Un vote par personne</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">L'abolition des impôts</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Plus de privilèges</label>
+                        </div>
+                        <div class="explanation" id="exp-q6">
+                            ✨ Les députés du Tiers-État demandent un vote par personne car ils sont plus nombreux, alors que le clergé et la noblesse veulent un vote par ordre.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7 : Quand a lieu le serment du jeu de paume ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q7', false)">Le 17 juin 1789</label>
+                            <label onclick="checkAnswer(this, 'q7', true)">Le 20 juin 1789</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Le 9 juillet 1789</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Le 14 juillet 1789</label>
+                        </div>
+                        <div class="explanation" id="exp-q7">
+                            ✨ Le serment du jeu de paume a lieu le 20 juin 1789. Les députés jurent de ne pas se séparer avant d'avoir donné une Constitution à la France.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8 : Que se passe-t-il le 9 juillet 1789 ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q8', false)">La prise de la Bastille</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">L'abolition des privilèges</label>
+                            <label onclick="checkAnswer(this, 'q8', true)">La proclamation de l'Assemblée nationale constituante</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">La Déclaration des droits de l'homme</label>
+                        </div>
+                        <div class="explanation" id="exp-q8">
+                            ✨ Le 9 juillet 1789, les députés se déclarent Assemblée nationale constituante, ce qui donne le pouvoir à la Nation et marque la fin de la monarchie absolue.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9 : Que se passe-t-il le 14 juillet 1789 ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q9', false)">Le serment du jeu de paume</label>
+                            <label onclick="checkAnswer(this, 'q9', true)">La prise de la Bastille</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">L'abolition des privilèges</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">La convocation des États généraux</label>
+                        </div>
+                        <div class="explanation" id="exp-q9">
+                            ✨ Le 14 juillet 1789, une foule de Parisiens prend d'assaut la prison de la Bastille, symbole de l'absolutisme royal.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10 : Quand est rédigée la Déclaration des droits de l'homme et du citoyen ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q10', false)">Le 4 août 1789</label>
+                            <label onclick="checkAnswer(this, 'q10', true)">Le 26 août 1789</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Le 14 juillet 1789</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Le 9 juillet 1789</label>
+                        </div>
+                        <div class="explanation" id="exp-q10">
+                            ✨ La Déclaration des droits de l'homme et du citoyen est rédigée le 26 août 1789. Elle proclame les principes de liberté, égalité et justice.
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Chronologie -->
+        <div id="timeline" class="page">
+            <div class="content-wrapper">
+                <div class="timeline-container">
+                    <h2>Les dates importantes de la Révolution française</h2>
+                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">1788-1789</div>
+                            <div class="timeline-content">
+                                <h4>Hiver rigoureux et famine</h4>
+                                <p>Un hiver très rigoureux provoque de mauvaises récoltes. Le prix du pain augmente et la famine se répand dans tout le royaume.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">5 mai 1789</div>
+                            <div class="timeline-content">
+                                <h4>Convocation des États généraux</h4>
+                                <p>Louis XVI convoque les États généraux pour résoudre les difficultés du royaume. Des cahiers de doléances sont rédigés par le peuple.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">17 juin 1789</div>
+                            <div class="timeline-content">
+                                <h4>Proclamation de l'Assemblée nationale</h4>
+                                <p>En signe de protestation, les députés du Tiers-État se proclament Assemblée nationale.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">20 juin 1789</div>
+                            <div class="timeline-content">
+                                <h4>Le serment du jeu de paume</h4>
+                                <p>Les députés du Tiers-État, rejoints par quelques membres du clergé et de la noblesse, jurent de ne pas se séparer avant d'avoir donné une Constitution à la France.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">9 juillet 1789</div>
+                            <div class="timeline-content">
+                                <h4>Fin de la monarchie absolue</h4>
+                                <p>Les députés se déclarent Assemblée nationale constituante, ce qui donne le pouvoir à la Nation. C'est la fin de la monarchie absolue.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">14 juillet 1789</div>
+                            <div class="timeline-content">
+                                <h4>Prise de la Bastille</h4>
+                                <p>Une foule de Parisiens prend d'assaut la prison de la Bastille, symbole de l'absolutisme royal.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">Été 1789</div>
+                            <div class="timeline-content">
+                                <h4>La Grande Peur</h4>
+                                <p>La révolte se propage dans les campagnes. Les paysans attaquent les châteaux des seigneurs.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">4 août 1789</div>
+                            <div class="timeline-content">
+                                <h4>Abolition des privilèges</h4>
+                                <p>Les députés votent l'abolition des privilèges et des droits féodaux. Certains nobles et membres du clergé se joignent à la cause révolutionnaire.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                            <div class="timeline-date">26 août 1789</div>
+                            <div class="timeline-content">
+                                <h4>Déclaration des droits de l'homme et du citoyen</h4>
+                                <p>Les députés rédigent la Déclaration qui proclame les principes de liberté, égalité, justice et le droit de pratiquer la religion de son choix.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Charger le JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

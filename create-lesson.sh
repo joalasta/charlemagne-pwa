@@ -2,171 +2,48 @@
 
 # Vérifier si un argument a été fourni
 if [ $# -eq 0 ]; then
+    echo "❌ ERREUR : Aucun nom de chapitre fourni"
     echo "Usage: ./create-lesson.sh <nom-du-chapitre>"
     echo "Exemple: ./create-lesson.sh vikings"
     exit 1
 fi
 
+# Avertissement important sur les photos
+echo "⚠️ ATTENTION : Avant de créer la leçon"
+echo "============================================"
+echo "Selon le README.md, vous devez d'abord :"
+echo "1. Avoir les photos du cahier de votre fils"
+echo "2. Identifier le contenu exact du cours"
+echo "3. Repérer les schémas et illustrations"
+echo ""
+echo "Avez-vous les photos du cahier ? (o/n)"
+read -p "> " has_photos
+
+if [ "$has_photos" != "o" ]; then
+    echo "❌ Veuillez d'abord prendre en photo le cahier."
+    echo "   Cela permettra de créer une leçon fidèle au cours."
+    exit 1
+fi
+
 # Nom du chapitre (en minuscules, sans espaces)
 CHAPTER=$1
+# Convertir la première lettre en majuscule
+CHAPTER_TITLE="$(tr '[:lower:]' '[:upper:]' <<< ${CHAPTER:0:1})${CHAPTER:1}"
 
-# Créer le fichier HTML
-cat > "chapitre-${CHAPTER}.html" << EOL
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les ${CHAPTER^} - Histoire CM1</title>
-    
-    <!-- PWA Meta tags -->
-    <meta name="theme-color" content="#2463EB">
-    <meta name="description" content="Découvre l'histoire des ${CHAPTER^} !">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="${CHAPTER^} App">
-    <link rel="stylesheet" href="navigation.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Navigation principale -->
-    <nav class="main-nav">
-        <a href="index.html" class="nav-back">← Accueil</a>
-        <div class="nav-center">
-            <h2 class="nav-title"></h2>
-            <div class="score-live" id="liveScore">Score: 0/5</div>
-        </div>
-        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
-    </nav>
+# Copier le template et créer le fichier HTML
+if [ ! -f "lesson-template.html" ]; then
+    echo "❌ ERREUR : Le fichier lesson-template.html est manquant"
+    exit 1
+fi
 
-    <!-- Contenu principal -->
-    <main class="main-content">
-        <!-- Page d'accueil -->
-        <div id="home" class="page active">
-            <div class="home-page">
-                <div class="charlemagne-container">
-                    <img src="images/${CHAPTER}-icon.png" alt="${CHAPTER^}" class="charlemagne-image">
-                </div>
-                <h1>Les ${CHAPTER^}</h1>
-                <p class="subtitle">Description à personnaliser</p>
-                
-                <div class="menu-grid">
-                    <div class="menu-card" onclick="showPage('lesson')">
-                        <div class="icon">
-                            <img src="icons/book.svg" alt="Livres" class="icon-img">
-                        </div>
-                        <h3>La Leçon</h3>
-                    </div>
-                    
-                    <div class="menu-card" onclick="showPage('quiz')">
-                        <div class="icon">
-                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
-                        </div>
-                        <h3>Quiz</h3>
-                    </div>
-                    
-                    <div class="menu-card" onclick="showPage('timeline')">
-                        <div class="icon">
-                            <img src="icons/calendar.svg" alt="Calendrier" class="icon-img">
-                        </div>
-                        <h3>Chronologie</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+cp lesson-template.html "chapitre-${CHAPTER}.html"
 
-        <!-- Page Leçon -->
-        <div id="lesson" class="page">
-            <div class="content-wrapper">
-                <div class="lesson-content">
-                    <h2>Les ${CHAPTER^}</h2>
-                    
-                    <h3>1. Premier titre</h3>
-                    <p>Premier paragraphe...</p>
-                    <p>Date importante : <span class="date-important">DATE av. J.-C.</span></p>
-                    
-                    <h3>2. Deuxième titre</h3>
-                    <p>Deuxième paragraphe...</p>
-                    
-                    <h3>3. Troisième titre</h3>
-                    <p>Troisième paragraphe...</p>
-                    
-                    <h3>📖 À retenir</h3>
-                    <ul>
-                        <li><strong>Date 1</strong> : Événement 1</li>
-                        <li><strong>Date 2</strong> : Événement 2</li>
-                        <li><strong>Date 3</strong> : Événement 3</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Page Quiz -->
-        <div id="quiz" class="page">
-            <div class="content-wrapper">
-                <div class="quiz-container">
-                    <h2>Teste tes connaissances sur les ${CHAPTER^} !</h2>
-                    
-                    <!-- Switch pour le mode difficile -->
-                    <div class="quiz-mode-switch">
-                        <label class="switch-container">
-                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
-                            <span class="switch-slider"></span>
-                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
-                        </label>
-                    </div>
-                    
-                    <div class="question">
-                        <h3>Question 1 : Première question ?</h3>
-                        <div class="options">
-                            <label onclick="checkAnswer(this, 'q1', false)">Réponse 1</label>
-                            <label onclick="checkAnswer(this, 'q1', true)">Bonne réponse</label>
-                            <label onclick="checkAnswer(this, 'q1', false)">Réponse 3</label>
-                            <label onclick="checkAnswer(this, 'q1', false)">Réponse 4</label>
-                        </div>
-                        <div class="explanation" id="exp-q1">
-                            ✨ Explication de la réponse 1
-                        </div>
-                    </div>
-
-                    <!-- Répéter le bloc question pour les questions 2 à 5 -->
-                    
-                </div>
-            </div>
-        </div>
-
-        <!-- Page Chronologie -->
-        <div id="timeline" class="page">
-            <div class="content-wrapper">
-                <div class="timeline-container">
-                    <h2>Les dates importantes</h2>
-                    <p class="timeline-hint">👆 Clique sur chaque événement pour en savoir plus</p>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item" onclick="toggleTimelineItem(this)">
-                            <div class="timeline-date">DATE</div>
-                            <div class="timeline-content">
-                                <h4>Événement 1</h4>
-                                <p>Description de l'événement 1</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Répéter le bloc timeline-item pour chaque événement -->
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Charger le JavaScript -->
-    <script src="scripts/main.js"></script>
-</body>
-</html>
-EOL
+# Remplacer les placeholders de base
+sed -i '' "s/\[TITRE_ROI\]/Les ${CHAPTER_TITLE}/g" "chapitre-${CHAPTER}.html"
+sed -i '' "s/\[TITRE_COURT\]/${CHAPTER_TITLE}/g" "chapitre-${CHAPTER}.html"
+sed -i '' "s/\[IMAGE_ROI\]/${CHAPTER}-icon/g" "chapitre-${CHAPTER}.html"
+sed -i '' "s/\[NOMBRE_QUESTIONS\]/5/g" "chapitre-${CHAPTER}.html"
+sed -i '' "s/charlemagne\.js/scripts\/main.js/g" "chapitre-${CHAPTER}.html"
 
 # Créer les dossiers nécessaires s'ils n'existent pas
 mkdir -p images
@@ -181,7 +58,7 @@ done
 
 # Créer un fichier README pour les images
 cat > "images/README.md" << EOL
-# Images pour le chapitre ${CHAPTER^}
+# Images pour le chapitre ${CHAPTER_TITLE}
 
 ## Images nécessaires :
 1. \`${CHAPTER}-icon.png\` : Icône principale du chapitre (format carré recommandé)
@@ -209,30 +86,59 @@ echo "
 
 # Afficher les instructions finales
 echo "
-✅ Chapitre créé avec succès !
+✅ Structure du chapitre créée avec succès !
 
-À faire maintenant :
+ÉTAPE 1 : CONTENU DE LA LEÇON
+-----------------------------
+1. Dans chapitre-${CHAPTER}.html, remplacez les placeholders suivants :
+   - [NUMERO_CHAPITRE] : Numéro du chapitre (ex: H7)
+   - [TITRE_LECON] : Titre complet de la leçon
+   - [SOUS_TITRE] : Sous-titre ou période historique
+   - [TITRE_SECTION_1] à [TITRE_SECTION_4] : Titres des sections
+   - [CONTENU_SECTION_1] à [CONTENU_SECTION_4] : Contenu des sections
+   - [DATE_1], [DATE_2], etc. : Dates importantes
+   - [EVENEMENT_1], [EVENEMENT_2], etc. : Événements correspondants
+
+2. Pour la chronologie :
+   - Remplacer [DATE], [TITRE_EVENEMENT], [DESCRIPTION_EVENEMENT]
+   - Copier le bloc timeline-item pour chaque événement
+   - Les organiser dans l'ordre chronologique
+
+3. Pour le quiz :
+   - Remplacer [N], [QUESTION], [REPONSE_1], etc.
+   - Copier le bloc question pour chaque question
+   - Ajouter [EXPLICATION] pour chaque réponse
+
+ÉTAPE 2 : RESSOURCES NÉCESSAIRES
+-------------------------------
 1. Ajouter l'icône ${CHAPTER}-icon.png dans le dossier images/
-2. Compléter le contenu de la leçon dans chapitre-${CHAPTER}.html
-3. Créer les questions du quiz avec leurs réponses
-4. Ajouter les dates dans la chronologie
-5. Ajouter les réponses du mode difficile dans scripts/main.js
-6. Ajouter la carte du chapitre dans index.html avec :
-   - Titre
-   - Description
-   - Période historique
-   - Lien vers chapitre-${CHAPTER}.html
+2. Optimiser toutes les images du cours pour le web
+3. Vérifier que les icônes sont présentes :
+   - book.svg
+   - brain.svg 
+   - calendar.svg
 
-🎨 Classes CSS importantes à utiliser :
-- date-important : Pour mettre en valeur les dates
+ÉTAPE 3 : INTÉGRATION
+--------------------
+1. Ajouter la carte du chapitre dans index.html
+2. Respecter l'ordre chronologique historique
+3. Vérifier tous les liens et la navigation
+4. Tester le quiz en mode normal et difficile
+
+🎨 Classes CSS disponibles :
+- date-important : Pour les dates importantes
+- highlight : Pour les mots clés
 - explanation : Pour les explications du quiz
-- timeline-item : Pour les événements de la chronologie
+- timeline-item : Pour la chronologie
+- charlemagne-image : Pour l'image principale (ne pas utiliser icon-img)
+- subtitle : Pour le sous-titre (ne pas utiliser period)
 
-📱 N'oubliez pas :
-- Toutes les images doivent être optimisées
-- Vérifier que le quiz fonctionne en mode normal et difficile
-- Tester la navigation et le bouton de retour
-- Vérifier que la chronologie est interactive
+📝 Fichiers à éditer :
+1. chapitre-${CHAPTER}.html (remplacer les placeholders)
+2. scripts/main.js (réponses du mode difficile)
+3. index.html (ajout de la carte)
 "
 
-echo "🚀 Création terminée !" 
+echo "🚀 Création de la structure terminée ! Vous pouvez maintenant commencer à personnaliser le contenu." 
+
+

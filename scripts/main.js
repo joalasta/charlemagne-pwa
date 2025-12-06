@@ -25,6 +25,19 @@ const hardModeAnswers = {
         'q3': ['villas', 'les villas', 'villa'],
         'q4': ['constantin', 'constantin 1er'],
         'q5': ['313', '313 après JC']
+    },
+    // Lumières et monarchie absolue
+    'lumières-monarchie-absolue': {
+        'q1': ['monarchie absolue', 'monarchie absolue de droit divin', 'privilèges', 'les privilèges'],
+        'q2': ['hiver rigoureux', 'hiver', 'mauvaises récoltes', 'récoltes catastrophiques'],
+        'q3': ['3', 'trois', '3 ordres'],
+        'q4': ['5 mai 1789', '5 mai', 'mai 1789'],
+        'q5': ['cahiers de doléances', 'cahier de doléances', 'doléances'],
+        'q6': ['vote par personne', 'vote par tête', 'par personne', 'par tête'],
+        'q7': ['20 juin 1789', '20 juin', 'juin 1789'],
+        'q8': ['assemblée nationale constituante', 'assemblée constituante', 'assemblée nationale'],
+        'q9': ['bastille', 'la bastille', 'prise de la bastille'],
+        'q10': ['26 août 1789', '26 août', 'août 1789', 'déclaration des droits de l\'homme']
     }
 };
 
