@@ -50,9 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
         updateScore();
     }
 
-    // Vérifier si on est sur la page quiz
-    if (document.getElementById('quiz')) {
+    // Vérifier quelle page est active au départ et gérer l'affichage du score
+    const activePage = document.querySelector('.page.active');
+    if (activePage && activePage.id === 'quiz') {
         document.body.classList.add('quiz-page');
+        const scoreElement = document.querySelector('.score-live');
+        const resetButton = document.querySelector('.nav-reset');
+        if (scoreElement) scoreElement.style.display = 'block';
+        if (resetButton) resetButton.style.display = 'block';
+    } else {
+        // S'assurer que le score est caché sur la page d'accueil
+        const scoreElement = document.querySelector('.score-live');
+        const resetButton = document.querySelector('.nav-reset');
+        if (scoreElement) scoreElement.style.display = 'none';
+        if (resetButton) resetButton.style.display = 'none';
     }
 });
 
@@ -90,12 +101,24 @@ function showPage(pageId) {
     
     if (pageId === 'quiz') {
         document.body.classList.add('quiz-page');
-        if (scoreElement) scoreElement.style.display = 'block';
-        if (resetButton) resetButton.style.display = 'block';
+        if (scoreElement) {
+            scoreElement.style.display = 'block';
+            scoreElement.style.visibility = 'visible';
+        }
+        if (resetButton) {
+            resetButton.style.display = 'block';
+            resetButton.style.visibility = 'visible';
+        }
     } else {
         document.body.classList.remove('quiz-page');
-        if (scoreElement) scoreElement.style.display = 'none';
-        if (resetButton) resetButton.style.display = 'none';
+        if (scoreElement) {
+            scoreElement.style.display = 'none';
+            scoreElement.style.visibility = 'hidden';
+        }
+        if (resetButton) {
+            resetButton.style.display = 'none';
+            resetButton.style.visibility = 'hidden';
+        }
     }
 }
 
