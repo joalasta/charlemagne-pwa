@@ -1,7 +1,7 @@
-# Images pour le chapitre Lumières-monarchie-absolue
+# Images pour le chapitre Melanges
 
 ## Images nécessaires :
-1. `lumières-monarchie-absolue-icon.png` : Icône principale du chapitre (format carré recommandé)
+1. `melanges-icon.png` : Icône principale du chapitre (format carré recommandé)
 2. Autres images du chapitre à placer ici...
 
 ## Format recommandé :

@@ -38,6 +38,19 @@ const hardModeAnswers = {
         'q8': ['assemblée nationale constituante', 'assemblée constituante', 'assemblée nationale'],
         'q9': ['bastille', 'la bastille', 'prise de la bastille'],
         'q10': ['26 août 1789', '26 août', 'août 1789', 'déclaration des droits de l\'homme']
+    },
+    // Mélanges
+    'melanges': {
+        'q1': ['mélange homogène', 'homogène', 'mélange homogène où on ne peut pas distinguer'],
+        'q2': ['deux couches distinctes', 'deux couches', 'couches distinctes', 'hétérogène'],
+        'q3': ['sel et sucre', 'sel', 'sucre', 'le sel et le sucre'],
+        'q4': ['décantation', 'la décantation'],
+        'q5': ['décantation ou filtration', 'décantation', 'filtration', 'par décantation', 'par filtration'],
+        'q6': ['distillation', 'la distillation'],
+        'q7': ['réaction chimique', 'une réaction chimique', 'réaction'],
+        'q8': ['en bas', 'au fond', 'plus dense'],
+        'q9': ['mélange homogène', 'homogène', 'solution'],
+        'q10': ['réactifs', 'les réactifs', 'substances qui disparaissent']
     }
 };
 

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les mélanges - Sciences CM1</title>
+    
+    <!-- PWA Meta tags -->
+    <meta name="theme-color" content="#2463EB">
+    <meta name="description" content="Découvre les différents types de mélanges et comment les séparer !">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Mélanges App">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation principale -->
+    <nav class="main-nav">
+        <a href="sciences.html" class="nav-back">← Sciences</a>
+        <div class="nav-center">
+            <h2 class="nav-title"></h2>
+            <div class="score-live" id="liveScore">Score: 0/10</div>
+        </div>
+        <button class="reset-quiz nav-reset" onclick="resetQuiz()">🔄</button>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Page d'accueil -->
+        <div id="home" class="page active">
+            <div class="home-page">
+                <div class="charlemagne-container">
+                    <img src="images/melanges-icon.png" alt="Les mélanges" class="charlemagne-image">
+                </div>
+                <h1>Les mélanges</h1>
+                <p class="subtitle">Découvre les différents types de mélanges et comment les séparer</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showPage('lesson')">
+                        <div class="icon">
+                            <img src="icons/book.svg" alt="Livres" class="icon-img">
+                        </div>
+                        <h3>La Leçon</h3>
+                    </div>
+                    
+                    <div class="menu-card" onclick="showPage('quiz')">
+                        <div class="icon">
+                            <img src="icons/brain.svg" alt="Cible" class="icon-img">
+                        </div>
+                        <h3>Quiz</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Leçon -->
+        <div id="lesson" class="page">
+            <div class="content-wrapper">
+                <div class="lesson-content">
+                    <h2>Chapitre 2 - Les mélanges</h2>
+                    
+                    <h3>1. Définitions</h3>
+                    <p>
+                        Un <span class="highlight">mélange homogène</span> est un mélange dans lequel on ne peut pas distinguer les différents constituants. Par exemple, quand on mélange de l'eau et du sirop, on obtient un mélange homogène car on ne voit plus les deux liquides séparément.
+                    </p>
+                    <p>
+                        Un <span class="highlight">mélange hétérogène</span> est un mélange dans lequel on peut distinguer les différents constituants. Par exemple, quand on mélange de l'eau et de l'huile, on voit deux couches distinctes : c'est un mélange hétérogène.
+                    </p>
+                    
+                    <h3>2. Mélanges de liquides</h3>
+                    <p>
+                        <strong>Mélange d'eau et de sirop :</strong> Après agitation, ce mélange est <span class="highlight">homogène</span>. Les deux liquides (eau et sirop) sont <span class="highlight">miscibles</span> entre eux, c'est-à-dire qu'ils se mélangent parfaitement.
+                    </p>
+                    <p>
+                        <strong>Mélange d'eau et d'huile :</strong> Après agitation, ce mélange est <span class="highlight">hétérogène</span>. Les deux liquides (huile et eau) ne sont pas miscibles entre eux. Dans un mélange hétérogène, le liquide le plus dense est au fond. Le moins dense reste en surface. L'eau est plus dense que l'huile, donc l'eau se trouve en bas et l'huile en haut.
+                    </p>
+                    <p>
+                        Quand on agite fortement un mélange hétérogène, on peut observer une <span class="highlight">émulsion</span>. Les deux liquides se séparent ensuite par <span class="highlight">décantation</span>. La décantation consiste à laisser reposer le mélange jusqu'à ce que les constituants se séparent.
+                    </p>
+                    
+                    <h3>3. Mélanges de solides dans l'eau</h3>
+                    <p>
+                        Certains solides sont <span class="highlight">solubles</span> dans l'eau, par exemple le sel et le sucre. Après dissolution, on obtient un <span class="highlight">mélange homogène</span> appelé <span class="highlight">solution</span> du solide dans l'eau. Par exemple, quand on dissout du sel dans de l'eau, le sel est toujours là, mais on ne voit plus de cristaux. On obtient une solution d'eau salée.
+                    </p>
+                    <p>
+                        D'autres solides ne sont pas solubles dans l'eau, comme le sable. Quand on agite, on forme une <span class="highlight">suspension</span> du solide dans l'eau, mais le solide retombe au fond car il est plus dense que l'eau. C'est un <span class="highlight">mélange hétérogène</span>.
+                    </p>
+                    
+                    <h3>4. Comment séparer les mélanges ?</h3>
+                    <p>
+                        <strong>Pour un mélange hétérogène (suspension) :</strong> On peut séparer le solide et l'eau d'une suspension par <span class="highlight">décantation</span> ou par <span class="highlight">filtration</span>. Ces procédés ne peuvent pas être utilisés pour une solution.
+                    </p>
+                    <p>
+                        La <span class="highlight">décantation</span> : on laisse reposer et le solide tombe au fond. On peut ensuite récupérer l'eau presque limpide en haut.
+                    </p>
+                    <p>
+                        La <span class="highlight">filtration</span> : on utilise un filtre qui retient le solide. Le liquide passe à travers le filtre et on récupère le solide sur le filtre.
+                    </p>
+                    <p>
+                        <strong>Pour un mélange homogène (solution) :</strong> On peut récupérer le solide d'une solution dans l'eau par <span class="highlight">évaporation</span> de l'eau. Pour récupérer de l'eau de la solution, il faut réaliser une évaporation puis une <span class="highlight">condensation</span> de l'eau. On appelle ce procédé une <span class="highlight">distillation</span>. C'est une méthode pour obtenir de l'eau douce à partir d'eau de mer !
+                    </p>
+                    
+                    <h3>5. Les réactions chimiques</h3>
+                    <p>
+                        Un mélange peut provoquer une <span class="highlight">réaction chimique</span> ! Une réaction chimique est une transformation de la matière au cours de laquelle des substances disparaissent et de nouvelles substances apparaissent.
+                    </p>
+                    <p>
+                        Les substances qui disparaissent (qui réagissent entre elles) sont appelées les <span class="highlight">réactifs</span>. Les substances qui apparaissent (qui sont produites) sont appelées les <span class="highlight">produits</span>.
+                    </p>
+                    <p>
+                        <strong>Exemple : Mélange de bicarbonate de soude et de vinaigre</strong> Quand on mélange du bicarbonate de soude avec du vinaigre, il y a des bulles qui se forment. C'est un gaz qui est créé et qui s'échappe. Le gaz est du <span class="highlight">dioxyde de carbone (CO₂)</span>. Il se forme aussi d'autres matières. À la fin de la réaction, ce ne sont ni du vinaigre ni du bicarbonate de soude qui se trouvent dans le récipient !
+                    </p>
+                    
+                    <h3>📖 À retenir</h3>
+                    <ul>
+                        <li><strong>Mélange homogène</strong> : On ne peut pas distinguer les différents constituants</li>
+                        <li><strong>Mélange hétérogène</strong> : On peut distinguer les différents constituants</li>
+                        <li><strong>Liquides miscibles</strong> : Se mélangent parfaitement (ex: eau + sirop)</li>
+                        <li><strong>Liquides non miscibles</strong> : Ne se mélangent pas (ex: eau + huile)</li>
+                        <li><strong>Solides solubles</strong> : Se dissolvent dans l'eau (ex: sel, sucre)</li>
+                        <li><strong>Solides insolubles</strong> : Ne se dissolvent pas (ex: sable)</li>
+                        <li><strong>Décantation</strong> : Laisser reposer pour séparer les constituants</li>
+                        <li><strong>Filtration</strong> : Utiliser un filtre pour retenir le solide</li>
+                        <li><strong>Distillation</strong> : Évaporation puis condensation pour récupérer l'eau</li>
+                        <li><strong>Réaction chimique</strong> : Transformation où des substances disparaissent et d'autres apparaissent</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Quiz -->
+        <div id="quiz" class="page">
+            <div class="content-wrapper">
+                <div class="quiz-container">
+                    <h2>Teste tes connaissances sur les mélanges !</h2>
+                    
+                    <!-- Switch pour le mode difficile -->
+                    <div class="quiz-mode-switch">
+                        <label class="switch-container">
+                            <input type="checkbox" id="hardMode" onchange="toggleHardMode()">
+                            <span class="switch-slider"></span>
+                            <span class="switch-label">Mode difficile (réponses à saisir)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="question">
+                        <h3>Question 1 : Qu'est-ce qu'un mélange homogène ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q1', true)">Un mélange où on ne peut pas distinguer les constituants</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">Un mélange où on peut distinguer les constituants</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">Un mélange de deux liquides seulement</label>
+                            <label onclick="checkAnswer(this, 'q1', false)">Un mélange qui ne se sépare jamais</label>
+                        </div>
+                        <div class="explanation" id="exp-q1">
+                            ✨ Un mélange homogène est un mélange dans lequel on ne peut pas distinguer les différents constituants, comme l'eau et le sirop mélangés.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 2 : Que se passe-t-il quand on mélange de l'eau et de l'huile ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q2', false)">Ils se mélangent parfaitement</label>
+                            <label onclick="checkAnswer(this, 'q2', true)">Ils forment deux couches distinctes</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">L'huile se dissout dans l'eau</label>
+                            <label onclick="checkAnswer(this, 'q2', false)">Ils forment une solution</label>
+                        </div>
+                        <div class="explanation" id="exp-q2">
+                            ✨ L'eau et l'huile ne sont pas miscibles. Ils forment un mélange hétérogène avec deux couches : l'eau en bas (plus dense) et l'huile en haut (moins dense).
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 3 : Quels solides sont solubles dans l'eau ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q3', false)">Le sable</label>
+                            <label onclick="checkAnswer(this, 'q3', true)">Le sel et le sucre</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Tous les solides</label>
+                            <label onclick="checkAnswer(this, 'q3', false)">Aucun solide</label>
+                        </div>
+                        <div class="explanation" id="exp-q3">
+                            ✨ Le sel et le sucre sont solubles dans l'eau. Quand on les dissout, on obtient une solution (mélange homogène). Le sable, lui, n'est pas soluble.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 4 : Comment appelle-t-on le procédé qui consiste à laisser reposer un mélange pour séparer les constituants ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q4', true)">La décantation</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">La filtration</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">La distillation</label>
+                            <label onclick="checkAnswer(this, 'q4', false)">L'évaporation</label>
+                        </div>
+                        <div class="explanation" id="exp-q4">
+                            ✨ La décantation consiste à laisser reposer le mélange jusqu'à ce que les constituants se séparent. Le solide tombe au fond et on peut récupérer le liquide en haut.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 5 : Comment sépare-t-on un solide d'une suspension ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q5', false)">Par distillation uniquement</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">Par évaporation uniquement</label>
+                            <label onclick="checkAnswer(this, 'q5', true)">Par décantation ou filtration</label>
+                            <label onclick="checkAnswer(this, 'q5', false)">On ne peut pas les séparer</label>
+                        </div>
+                        <div class="explanation" id="exp-q5">
+                            ✨ Pour séparer un solide d'une suspension (mélange hétérogène), on peut utiliser la décantation (laisser reposer) ou la filtration (utiliser un filtre). Ces méthodes ne fonctionnent pas pour une solution.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 6 : Comment récupère-t-on l'eau d'une solution d'eau salée ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q6', false)">Par décantation</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">Par filtration</label>
+                            <label onclick="checkAnswer(this, 'q6', true)">Par distillation</label>
+                            <label onclick="checkAnswer(this, 'q6', false)">En laissant reposer</label>
+                        </div>
+                        <div class="explanation" id="exp-q6">
+                            ✨ Pour récupérer l'eau d'une solution (mélange homogène), il faut réaliser une distillation : évaporation puis condensation de l'eau. C'est ainsi qu'on obtient de l'eau douce à partir d'eau de mer !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 7 : Que se passe-t-il quand on mélange du bicarbonate de soude et du vinaigre ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q7', false)">Rien ne se passe</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Ils se mélangent simplement</label>
+                            <label onclick="checkAnswer(this, 'q7', true)">Il y a une réaction chimique avec formation de bulles</label>
+                            <label onclick="checkAnswer(this, 'q7', false)">Ils forment une solution</label>
+                        </div>
+                        <div class="explanation" id="exp-q7">
+                            ✨ Quand on mélange du bicarbonate de soude et du vinaigre, il y a une réaction chimique. Des bulles se forment car un gaz (dioxyde de carbone) est créé. À la fin, ce ne sont plus les mêmes substances dans le récipient !
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 8 : Dans un mélange hétérogène d'eau et d'huile, où se trouve l'eau ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q8', true)">En bas, car elle est plus dense</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">En haut, car elle est moins dense</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Au milieu</label>
+                            <label onclick="checkAnswer(this, 'q8', false)">Mélangée avec l'huile</label>
+                        </div>
+                        <div class="explanation" id="exp-q8">
+                            ✨ Dans un mélange hétérogène, le liquide le plus dense est au fond. L'eau est plus dense que l'huile, donc l'eau se trouve en bas et l'huile en haut.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 9 : Qu'est-ce qu'une solution ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q9', false)">Un mélange hétérogène</label>
+                            <label onclick="checkAnswer(this, 'q9', true)">Un mélange homogène obtenu en dissolvant un solide dans l'eau</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Un mélange de deux liquides</label>
+                            <label onclick="checkAnswer(this, 'q9', false)">Un mélange qui se sépare toujours</label>
+                        </div>
+                        <div class="explanation" id="exp-q9">
+                            ✨ Une solution est un mélange homogène obtenu en dissolvant un solide soluble (comme le sel ou le sucre) dans l'eau. On ne voit plus le solide, mais il est toujours présent.
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <h3>Question 10 : Que sont les réactifs dans une réaction chimique ?</h3>
+                        <div class="options">
+                            <label onclick="checkAnswer(this, 'q10', false)">Les substances qui apparaissent</label>
+                            <label onclick="checkAnswer(this, 'q10', true)">Les substances qui disparaissent et réagissent</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Les bulles qui se forment</label>
+                            <label onclick="checkAnswer(this, 'q10', false)">Le gaz produit</label>
+                        </div>
+                        <div class="explanation" id="exp-q10">
+                            ✨ Dans une réaction chimique, les réactifs sont les substances qui disparaissent (qui réagissent entre elles). Les produits sont les nouvelles substances qui apparaissent.
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Charger le JavaScript -->
+    <script src="scripts/main.js"></script>
+    <script src="sw-register.js"></script>
+</body>
+</html>
+
